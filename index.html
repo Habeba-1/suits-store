@@ -785,7 +785,40 @@
           padding: 10px;
         }
       }
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 5px 0; /* بدل 1rem */
+        }
 
+        .nav-container {
+          padding: 0 10px;
+        }
+
+        .logo h1 {
+          font-size: 1rem;
+        }
+
+        .nav-link {
+          font-size: 0.8rem;
+          padding: 4px 6px;
+        }
+      }
+      @media (max-width: 768px) {
+        .navbar {
+          position: static; /* كده مش هتفضل لازقة */
+        }
+      }
+      @media (max-width: 768px) {
+        .nav-menu {
+          overflow-x: auto;
+          flex-wrap: nowrap;
+          gap: 10px;
+        }
+
+        .nav-menu::-webkit-scrollbar {
+          display: none;
+        }
+      }
       @media (max-width: 480px) {
         .products-grid {
           grid-template-columns: 1fr;
@@ -794,6 +827,45 @@
         .nav-menu {
           flex-direction: column;
         }
+      }
+      @media (max-width: 768px) {
+        .navbar {
+          position: static;
+          padding: 10px 5px;
+        }
+
+        .nav-container {
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .logo h1 {
+          font-size: 1.2rem;
+          text-align: center;
+        }
+
+        .nav-menu {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr); /* 3 في الصف */
+          gap: 8px;
+          width: 100%;
+          text-align: center;
+        }
+
+        .nav-link {
+          font-size: 0.9rem;
+          padding: 6px;
+        }
+
+        .cart-link {
+          grid-column: span 3; /* تخلي السلة لوحدها صف */
+          text-align: center;
+        }
+      }
+      .cart-link {
+        width: 60%;
+        margin: auto;
       }
 
       .footer-btn {
@@ -812,6 +884,52 @@
         background-color: #e6c200;
         transform: scale(1.05);
       }
+      /* زرار المنيو */
+      .menu-toggle {
+        display: none;
+        font-size: 1.8rem;
+        color: var(--havana);
+        cursor: pointer;
+      }
+
+      /* موبايل */
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: block;
+        }
+
+        .nav-container {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+
+        .nav-menu {
+          position: absolute;
+          top: 60px;
+          right: 0;
+          width: 100%;
+          background-color: var(--primary-black);
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+          padding: 15px 0;
+
+          display: none; /* مخفية */
+        }
+
+        .nav-menu.active {
+          display: flex; /* تظهر */
+        }
+
+        .nav-link {
+          width: 100%;
+          text-align: center;
+        }
+
+        .cart-link {
+          width: 90%;
+        }
+      }
     </style>
   </head>
   <body>
@@ -824,6 +942,12 @@
         <div class="logo">
           <h1>🎩 House for Men's Suits</h1>
         </div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <ul class="nav-menu" id="nav-menu">
+    ...
+  </ul>
+</div>
         <ul class="nav-menu">
           <li><a href="#blazers" class="nav-link">البليزر</a></li>
           <li><a href="#shirts" class="nav-link">القمصان</a></li>
@@ -963,287 +1087,466 @@
 
     <script>
       // Product Data
+
       const products = {
         blazers: [
           {
             id: "blazer-1",
+
             title: "البليزر الأسود الكلاسيكي",
+
             price: 450,
+
             image: "blazer-1.jpg",
+
             colors: ["#000000", "#1a1a1a", "#333333"],
+
             description: "بليزر أسود فاخر مصنوع من أفضل الأقمشة",
           },
+
           {
             id: "blazer-2",
+
             title: "البليزر البني الفاتح",
+
             price: 480,
+
             image: "blazer-2.jpg",
+
             colors: ["#8B7355", "#A0826D", "#D2B48C"],
+
             description: "بليزر بني فاتح أنيق وكلاسيكي",
           },
+
           {
             id: "blazer-3",
+
             title: "البليزر الرمادي الحديث",
+
             price: 500,
+
             image: "blazer-3.jpg",
+
             colors: ["#808080", "#A9A9A9", "#C0C0C0"],
+
             description: "بليزر رمادي حديث لمظهر احترافي",
           },
+
           {
             id: "blazer-4",
+
             title: "البليزر الأزرق الداكن",
+
             price: 520,
+
             image: "blazer-4.jpg",
+
             colors: ["#001a4d", "#003d99", "#0052cc"],
+
             description: "بليزر أزرق داكن فاخر وأنيق",
           },
+
           {
             id: "blazer-5",
+
             title: "البليزر البيج الفاخر",
+
             price: 490,
+
             image: "blazer-5.jpg",
+
             colors: ["#F5DEB3", "#DEB887", "#D2B48C"],
+
             description: "بليزر بيج فاخر للمناسبات الخاصة",
           },
+
           {
             id: "blazer-6",
+
             title: "البليزر الأسود المخطط",
+
             price: 530,
+
             image: "blazer-6.jpg",
+
             colors: ["#000000", "#1a1a1a", "#2d2d2d"],
+
             description: "بليزر أسود مخطط بتصميم عصري",
           },
         ],
+
         shirts: [
           {
             id: "shirt-1",
+
             title: "القميص الأبيض الكلاسيكي",
+
             price: 200,
+
             image: "shirt-1.jpg",
+
             colors: ["#ffffff", "#f5f5f5", "#e8e8e8"],
+
             description: "قميص أبيض كلاسيكي من أفضل الأقمشة",
           },
+
           {
             id: "shirt-2",
+
             title: "القميص الأسود الفاخر",
+
             price: 220,
+
             image: "shirt-2.jpg",
+
             colors: ["#000000", "#1a1a1a", "#2d2d2d"],
+
             description: "قميص أسود فاخر للمناسبات الرسمية",
           },
+
           {
             id: "shirt-3",
+
             title: "القميص الأزرق الداكن",
+
             price: 210,
+
             image: "shirt-3.jpg",
+
             colors: ["#001a4d", "#003d99", "#0052cc"],
+
             description: "قميص أزرق داكن أنيق وعملي",
           },
+
           {
             id: "shirt-4",
+
             title: "القميص الرمادي الحديث",
+
             price: 215,
+
             image: "shirt-4.jpg",
+
             colors: ["#808080", "#A9A9A9", "#C0C0C0"],
+
             description: "قميص رمادي حديث ومتعدد الاستخدامات",
           },
+
           {
             id: "shirt-5",
+
             title: "القميص البيبي بلو",
+
             price: 225,
+
             image: "shirt-5.jpg",
+
             colors: ["#8B4513", "#A0522D", "#CD853F"],
+
             description: "قميص بني دافئ للمظهر الكلاسيكي",
           },
+
           {
             id: "shirt-6",
+
             title: "القميص الرصاصي",
+
             price: 230,
+
             image: "shirt-6.jpg",
+
             colors: ["#ffffff", "#f5f5f5", "#e8e8e8"],
+
             description: "قميص أبيض مخطط بتصميم عصري",
           },
         ],
+
         pants: [
           {
             id: "pants-1",
+
             title: "البنطلون الأسود الكلاسيكي",
+
             price: 280,
+
             image: "img2.jpg",
+
             colors: ["#000000", "#1a1a1a", "#2d2d2d"],
+
             description: "بنطلون أسود كلاسيكي للمناسبات الرسمية",
           },
+
           {
             id: "pants-2",
+
             title: "البنطلون الرمادي الفاخر",
+
             price: 300,
+
             image: "img3.jpg",
+
             colors: ["#808080", "#A9A9A9", "#C0C0C0"],
+
             description: "بنطلون رمادي فاخر وأنيق",
           },
+
           {
             id: "pants-3",
+
             title: "البنطلون البني الدافئ",
+
             price: 290,
+
             image: "img4.jpg",
+
             colors: ["#8B7355", "#A0826D", "#D2B48C"],
+
             description: "بنطلون بني دافئ للمظهر الكلاسيكي",
           },
+
           {
             id: "pants-4",
+
             title: "البنطلون الأزرق الداكن",
+
             price: 310,
+
             image: "img5.jpg",
+
             colors: ["#001a4d", "#003d99", "#0052cc"],
+
             description: "بنطلون أزرق داكن أنيق وعملي",
           },
+
           {
             id: "pants-5",
+
             title: "البنطلون البيج الفاخر",
+
             price: 295,
+
             image: "img6.jpg",
+
             colors: ["#F5DEB3", "#DEB887", "#D2B48C"],
+
             description: "بنطلون بيج فاخر للمناسبات الخاصة",
           },
+
           {
             id: "pants-6",
+
             title: "البنطلون الأسود المخطط",
+
             price: 320,
+
             image: "img7.jpg",
+
             colors: ["#000000", "#1a1a1a", "#2d2d2d"],
+
             description: "بنطلون أسود مخطط بتصميم عصري",
           },
         ],
+
         jackets: [
           {
             id: "jacket-1",
+
             title: "الجاكت الأسود الفاخر",
+
             price: 550,
+
             image: "img8.jpg",
+
             colors: ["#000000", "#1a1a1a", "#2d2d2d"],
+
             description: "جاكت أسود فاخر للمناسبات الخاصة",
           },
+
           {
             id: "jacket-2",
+
             title: "الجاكت البني الدافئ",
+
             price: 570,
+
             image: "img9.jpg",
+
             colors: ["#8B7355", "#A0826D", "#D2B48C"],
+
             description: "جاكت بني دافئ وأنيق",
           },
+
           {
             id: "jacket-3",
+
             title: "الجاكت الرمادي الحديث",
+
             price: 580,
+
             image: "img10.jpg",
+
             colors: ["#808080", "#A9A9A9", "#C0C0C0"],
+
             description: "جاكت رمادي حديث ومتعدد الاستخدامات",
           },
+
           {
             id: "jacket-4",
+
             title: "الجاكت الأزرق الداكن",
+
             price: 600,
+
             image: "img11.jpg",
+
             colors: ["#001a4d", "#003d99", "#0052cc"],
+
             description: "جاكت أزرق داكن فاخر وأنيق",
           },
+
           {
             id: "jacket-5",
+
             title: "الجاكت الاسود",
+
             price: 590,
+
             image: "img12.jpg",
+
             colors: ["#F5DEB3", "#DEB887", "#D2B48C"],
+
             description: "جاكت بيج فاخر للمناسبات الخاصة",
           },
+
           {
             id: "jacket-6",
+
             title: "الجاكت الجملي",
+
             price: 610,
+
             image: "img13.jpg",
+
             colors: ["#000000", "#1a1a1a", "#2d2d2d"],
+
             description: "جاكت أسود مخطط بتصميم عصري",
           },
         ],
       };
 
       // Cart Array
+
       let cart = [];
+
       let selectedColor = {};
 
       // Initialize the page
+
       document.addEventListener("DOMContentLoaded", function () {
         renderAllProducts();
+
         loadCartFromLocalStorage();
       });
 
       // Render all products
+
       function renderAllProducts() {
         renderProducts("blazers", "blazers-grid");
+
         renderProducts("shirts", "shirts-grid");
+
         renderProducts("pants", "pants-grid");
+
         renderProducts("jackets", "jackets-grid");
       }
 
       // Render products for a category
+
       function renderProducts(category, gridId) {
         const grid = document.getElementById(gridId);
+
         grid.innerHTML = "";
 
         products[category].forEach((product) => {
           const card = createProductCard(product, category);
+
           grid.appendChild(card);
         });
       }
 
       // Create product card element
+
       function createProductCard(product, category) {
         const card = document.createElement("div");
+
         card.className = "product-card";
 
         let colorsHTML = "";
+
         product.colors.forEach((color) => {
           colorsHTML += `<div class="color-swatch" style="background-color: ${color};" title="${color}" onclick="selectColor('${product.id}', '${color}', event)"></div>`;
         });
 
         card.innerHTML = `
+  
                 <img src="${product.image}" alt="${product.title}" class="product-image">
+  
                 <div class="product-info">
+  
                     <h3 class="product-title">${product.title}</h3>
+  
                     <div class="product-price">${product.price} ج.م</div>
+  
                     <div class="product-colors" id="colors-${product.id}">
+  
                         ${colorsHTML}
+  
                     </div>
+  
                     <div class="product-actions">
+  
                         <button class="btn btn-primary" onclick="addToCart('${product.id}', '${category}')">أضف للسلة</button>
+  
                         <button class="btn btn-secondary" onclick="openModal('${product.id}', '${category}')">عرض التفاصيل</button>
+  
                     </div>
+  
                 </div>
+  
             `;
 
         return card;
       }
 
       // Select color for a product
+
       function selectColor(productId, color, event) {
         event.stopPropagation();
+
         selectedColor[productId] = color;
 
         // Update UI
+
         const swatches = document.querySelectorAll(
           `#colors-${productId} .color-swatch`,
         );
+
         swatches.forEach((swatch) => {
           swatch.classList.remove("selected");
         });
+
         event.target.classList.add("selected");
       }
 
       // Add to cart
+
       function addToCart(productId, category) {
         const product = products[category].find((p) => p.id === productId);
+
         const color = selectedColor[productId] || product.colors[0];
 
         // Check if item already in cart
+
         const existingItem = cart.find(
           (item) => item.id === productId && item.color === color,
         );
@@ -1253,36 +1556,51 @@
         } else {
           cart.push({
             id: productId,
+
             title: product.title,
+
             price: product.price,
+
             color: color,
+
             quantity: 1,
+
             category: category,
           });
         }
 
         updateCartUI();
+
         saveCartToLocalStorage();
+
         showNotification("تم إضافة المنتج إلى السلة بنجاح!");
       }
 
       // Add to cart from modal
+
       function addFromModal() {
         const productId =
           document.getElementById("modal-title").dataset.productId;
+
         const category =
           document.getElementById("modal-title").dataset.category;
+
         addToCart(productId, category);
+
         closeModal();
       }
 
       // Update cart UI
+
       function updateCartUI() {
         const cartCount = document.getElementById("cart-count");
+
         const cartItems = document.getElementById("cart-items");
+
         const cartTotal = document.getElementById("cart-total");
 
         let totalItems = 0;
+
         let totalPrice = 0;
 
         cartItems.innerHTML = "";
@@ -1290,133 +1608,193 @@
         if (cart.length === 0) {
           cartItems.innerHTML =
             '<div class="empty-cart"><p>السلة فارغة</p></div>';
+
           cartTotal.textContent = "0 ج.م";
+
           cartCount.textContent = "0";
+
           return;
         }
 
         cart.forEach((item, index) => {
           totalItems += item.quantity;
+
           totalPrice += item.price * item.quantity;
 
           const cartItem = document.createElement("div");
+
           cartItem.className = "cart-item";
+
           cartItem.innerHTML = `
+  
                     <div class="cart-item-title">${item.title}</div>
+  
                     <div class="cart-item-color">اللون: <span style="display: inline-block; width: 15px; height: 15px; background-color: ${item.color}; border-radius: 50%; margin-right: 5px;"></span></div>
+  
                     <div class="cart-item-price">${item.price} ج.م</div>
+  
                     <div class="cart-item-quantity">
+  
                         <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
+  
                         <span>${item.quantity}</span>
+  
                         <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
+  
                     </div>
+  
                     <button class="remove-btn" onclick="removeFromCart(${index})">حذف</button>
+  
                 `;
+
           cartItems.appendChild(cartItem);
         });
 
         cartCount.textContent = totalItems;
+
         cartTotal.textContent = totalPrice + " ج.م";
+
         saveCartToLocalStorage();
       }
 
       // Increase quantity
+
       function increaseQuantity(index) {
         cart[index].quantity++;
+
         updateCartUI();
       }
 
       // Decrease quantity
+
       function decreaseQuantity(index) {
         if (cart[index].quantity > 1) {
           cart[index].quantity--;
         } else {
           removeFromCart(index);
         }
+
         updateCartUI();
       }
 
       // Remove from cart
+
       function removeFromCart(index) {
         cart.splice(index, 1);
+
         updateCartUI();
       }
 
       // Clear cart
+
       function clearCart() {
         if (confirm("هل تريد تفريغ السلة بالكامل؟")) {
           cart = [];
+
           updateCartUI();
         }
       }
 
       // Toggle cart sidebar
+
       function toggleCart(event) {
         if (event) event.preventDefault();
+
         const cartSidebar = document.getElementById("cart-sidebar");
+
         cartSidebar.classList.toggle("active");
       }
 
       // Checkout
+
       function checkout() {
         if (cart.length === 0) {
           alert("السلة فارغة!");
+
           return;
         }
 
         let message = "تفاصيل الطلب:\n\n";
+
         let total = 0;
 
         cart.forEach((item) => {
           message += `${item.title} - ${item.quantity} × ${item.price} ج.م = ${item.quantity * item.price} ج.م\n`;
+
           total += item.quantity * item.price;
         });
 
         message += `\nالإجمالي: ${total} ج.م\n\n`;
+
         message += "شكراً لتسوقك معنا! يرجى التواصل معنا على:\n";
+
         message += "📞 01014447414\n";
+
         message += "📍 بني سويف – ميدان الزراعيين - شارع احمد عرابى";
 
         alert(message);
 
         // Clear cart after checkout
+
         cart = [];
+
         updateCartUI();
+
         toggleCart();
       }
 
       // Open modal
+
       function openModal(productId, category) {
         const product = products[category].find((p) => p.id === productId);
+
         const modal = document.getElementById("product-modal");
 
         document.getElementById("modal-image").src = product.image;
+
         document.getElementById("modal-title").textContent = product.title;
+
         document.getElementById("modal-title").dataset.productId = productId;
+
         document.getElementById("modal-title").dataset.category = category;
+
         document.getElementById("modal-description").textContent =
           product.description;
+
         document.getElementById("modal-price").textContent =
           product.price + " ج.م";
 
         // Create color swatches
+
         const colorSelector = document.getElementById("modal-colors");
+
         colorSelector.innerHTML = "<h3>اختر اللون:</h3>";
+
         const colorsDiv = document.createElement("div");
+
         colorsDiv.className = "product-colors";
 
         product.colors.forEach((color) => {
           const swatch = document.createElement("div");
+
           swatch.className = "color-swatch";
+
           swatch.style.backgroundColor = color;
+
           swatch.title = color;
+
           swatch.onclick = (e) => {
             document
+
               .querySelectorAll("#modal-colors .color-swatch")
+
               .forEach((s) => s.classList.remove("selected"));
+
             swatch.classList.add("selected");
+
             selectedColor[productId] = color;
           };
+
           colorsDiv.appendChild(swatch);
         });
 
@@ -1426,48 +1804,70 @@
       }
 
       // Close modal
+
       function closeModal() {
         const modal = document.getElementById("product-modal");
+
         modal.style.display = "none";
       }
 
       // Close modal when clicking outside
+
       window.onclick = function (event) {
         const modal = document.getElementById("product-modal");
+
         if (event.target === modal) {
           modal.style.display = "none";
         }
       };
 
       // Save cart to localStorage
+
       function saveCartToLocalStorage() {
         localStorage.setItem("cart", JSON.stringify(cart));
       }
 
       // Load cart from localStorage
+
       function loadCartFromLocalStorage() {
         const savedCart = localStorage.getItem("cart");
+
         if (savedCart) {
           cart = JSON.parse(savedCart);
+
           updateCartUI();
         }
       }
 
       // Show notification
+
       function showNotification(message) {
         const notification = document.createElement("div");
+
         notification.style.cssText = `
+  
                 position: fixed;
+  
                 top: 20px;
+  
                 right: 20px;
+  
                 background-color: #4CAF50;
+  
                 color: white;
+  
                 padding: 15px 20px;
+  
                 border-radius: 5px;
+  
                 z-index: 10000;
+  
                 animation: slideIn 0.3s ease;
+  
             `;
+
         notification.textContent = message;
+
         document.body.appendChild(notification);
 
         setTimeout(() => {
@@ -1478,6 +1878,7 @@
       window.addEventListener("load", () => {
         document.getElementById("loader").style.display = "none";
       });
+
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -1487,11 +1888,23 @@
       });
 
       document
+
         .querySelectorAll(".products-section, .contact-section, .product-card")
+
         .forEach((el) => {
           el.classList.add("fade-up");
+
           observer.observe(el);
         });
+        function toggleMenu() {
+  const menu = document.getElementById("nav-menu");
+  menu.classList.toggle("active");
+}
+document.querySelectorAll(".nav-link").forEach(link => {
+  link.addEventListener("click", () => {
+    document.getElementById("nav-menu").classList.remove("active");
+  });
+});
     </script>
   </body>
 </html>
