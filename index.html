@@ -5,6 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>House for Men's Suits - متجر الملابس الرجالية</title>
     <style>
+      #loader {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+      }
+
+      .spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid #eee;
+        border-top: 5px solid #d4af37;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
       * {
         margin: 0;
         padding: 0;
@@ -27,9 +52,10 @@
 
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: var(--primary-black);
+        background-color: var(--light-gray);
         color: var(--text-dark);
         line-height: 1.6;
+        scroll-behavior: smooth;
       }
 
       /* Navigation Bar */
@@ -103,6 +129,7 @@
         padding: 2rem;
         text-align: center;
         border-bottom: 3px solid var(--havana);
+        background: transparent;
       }
 
       .hero-content {
@@ -123,9 +150,9 @@
         max-width: 1200px;
         margin: 3rem auto;
         padding: 2rem;
-        background-color: var(--light-gray);
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        background-color: var(--white);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       }
 
       .section-header {
@@ -155,17 +182,17 @@
       /* Product Card */
       .product-card {
         background-color: var(--white);
-        border-radius: 10px;
+        border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         transition: all 0.3s ease;
         cursor: pointer;
-        border: 2px solid transparent;
+        border: none;
       }
 
       .product-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(212, 175, 55, 0.25);
         border-color: var(--havana);
       }
 
@@ -174,6 +201,10 @@
         height: 280px;
         object-fit: cover;
         background-color: #f0f0f0;
+        transition: transform 0.4s ease;
+      }
+      .product-card:hover .product-image {
+        transform: scale(1.07);
       }
 
       .product-info {
@@ -239,6 +270,7 @@
       .btn-primary {
         background-color: var(--havana);
         color: var(--primary-black);
+        border-radius: 8px;
       }
 
       .btn-primary:hover {
@@ -572,8 +604,9 @@
         max-width: 1200px;
         margin: 3rem auto;
         padding: 2rem;
-        background-color: var(--light-gray);
-        border-radius: 10px;
+        background-color: var(--white);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       }
 
       .contact-info {
@@ -622,8 +655,8 @@
 
       /* Footer */
       .footer {
-        background-color: var(--primary-black);
-        color: var(--white);
+        background-color: var(--white); /* 👈 بدل الأسود */
+        color: var(--primary-black);
         text-align: center;
         padding: 2rem;
         border-top: 2px solid var(--havana);
@@ -709,9 +742,82 @@
           font-size: 1.3rem;
         }
       }
+
+      .fade-up {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: 0.6s ease;
+      }
+
+      .fade-up.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .btn {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.2);
+        top: 0;
+        left: -100%;
+        transition: 0.4s;
+      }
+
+      .btn:hover::after {
+        left: 0;
+      }
+      .navbar {
+        transition: all 0.3s ease;
+      }
+      @media (max-width: 768px) {
+        .products-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .navbar {
+          padding: 10px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .products-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-menu {
+          flex-direction: column;
+        }
+      }
+
+      .footer-btn {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: var(--havana);
+        color: var(--primary-black);
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .footer-btn:hover {
+        background-color: #e6c200;
+        transform: scale(1.05);
+      }
     </style>
   </head>
   <body>
+    <div id="loader">
+      <div class="spinner"></div>
+    </div>
     <!-- Navigation Bar -->
     <nav class="navbar">
       <div class="nav-container">
@@ -824,9 +930,13 @@
     <footer class="footer">
       <p>&copy; Design By Habibat Alrhman.</p>
       <p>
-        <a href="https://www.facebook.com/share/1SRTYbdkCF/" target="_blank"
-          >زيارة صفحتنا</a
+        <a
+          href="https://www.facebook.com/share/1SRTYbdkCF/"
+          target="_blank"
+          class="footer-btn"
         >
+          زيارة صفحتنا
+        </a>
       </p>
     </footer>
 
@@ -1364,6 +1474,24 @@
           notification.remove();
         }, 3000);
       }
+
+      window.addEventListener("load", () => {
+        document.getElementById("loader").style.display = "none";
+      });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      });
+
+      document
+        .querySelectorAll(".products-section, .contact-section, .product-card")
+        .forEach((el) => {
+          el.classList.add("fade-up");
+          observer.observe(el);
+        });
     </script>
   </body>
 </html>
