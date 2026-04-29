@@ -823,11 +823,8 @@
         .products-grid {
           grid-template-columns: 1fr;
         }
-
-        .nav-menu {
-          flex-direction: column;
-        }
       }
+
       @media (max-width: 768px) {
         .navbar {
           position: static;
@@ -944,11 +941,7 @@
         </div>
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-  <ul class="nav-menu" id="nav-menu">
-    ...
-  </ul>
-</div>
-        <ul class="nav-menu">
+        <ul class="nav-menu" id="nav-menu">
           <li><a href="#blazers" class="nav-link">البليزر</a></li>
           <li><a href="#shirts" class="nav-link">القمصان</a></li>
           <li><a href="#pants" class="nav-link">البنطلون</a></li>
@@ -1896,15 +1889,15 @@
 
           observer.observe(el);
         });
-        function toggleMenu() {
-  const menu = document.getElementById("nav-menu");
-  menu.classList.toggle("active");
-}
-document.querySelectorAll(".nav-link").forEach(link => {
-  link.addEventListener("click", () => {
-    document.getElementById("nav-menu").classList.remove("active");
-  });
-});
+      function toggleMenu() {
+        const menu = document.getElementById("nav-menu");
+        menu.classList.toggle("active");
+      }
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          document.getElementById("nav-menu").classList.remove("active");
+        });
+      });
     </script>
   </body>
 </html>
