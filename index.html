@@ -1,0 +1,1369 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>House for Men's Suits - متجر الملابس الرجالية</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-black: #1a1a1a;
+        --secondary-black: #2d2d2d;
+        --havana: #d4af37;
+        --light-gray: #f5f5f5;
+        --text-dark: #333;
+        --text-light: #666;
+        --white: #ffffff;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--primary-black);
+        color: var(--text-dark);
+        line-height: 1.6;
+      }
+
+      /* Navigation Bar */
+      .navbar {
+        background-color: var(--primary-black);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        border-bottom: 2px solid var(--havana);
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .logo h1 {
+        color: var(--havana);
+        font-size: 1.8rem;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .nav-link {
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+      }
+
+      .nav-link:hover {
+        color: var(--havana);
+        background-color: var(--secondary-black);
+        transform: translateY(-2px);
+      }
+
+      .cart-link {
+        background-color: var(--havana);
+        color: var(--primary-black) !important;
+        font-weight: bold;
+      }
+
+      .cart-link:hover {
+        background-color: #e6c200;
+        color: var(--primary-black) !important;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          var(--primary-black) 0%,
+          var(--secondary-black) 100%
+        );
+        padding: 2rem;
+        text-align: center;
+        border-bottom: 3px solid var(--havana);
+      }
+
+      .hero-content {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .hero-image {
+        max-width: 100%;
+        height: auto;
+        max-height: 400px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+      }
+
+      /* Products Section */
+      .products-section {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 2rem;
+        background-color: var(--light-gray);
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 3px solid var(--havana);
+      }
+
+      .section-header h2 {
+        color: var(--primary-black);
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .section-header p {
+        color: var(--text-light);
+        font-size: 1.1rem;
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      /* Product Card */
+      .product-card {
+        background-color: var(--white);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 2px solid transparent;
+      }
+
+      .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+        border-color: var(--havana);
+      }
+
+      .product-image {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+        background-color: #f0f0f0;
+      }
+
+      .product-info {
+        padding: 1.5rem;
+      }
+
+      .product-title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: var(--primary-black);
+        margin-bottom: 0.5rem;
+      }
+
+      .product-price {
+        color: var(--havana);
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+      .product-colors {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .color-swatch {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 2px solid transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .color-swatch:hover {
+        transform: scale(1.1);
+        border-color: var(--text-dark);
+      }
+
+      .color-swatch.selected {
+        border-color: var(--primary-black);
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .product-actions {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .btn {
+        flex: 1;
+        padding: 0.8rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary {
+        background-color: var(--havana);
+        color: var(--primary-black);
+      }
+
+      .btn-primary:hover {
+        background-color: #e6c200;
+        transform: scale(1.05);
+      }
+
+      .btn-secondary {
+        background-color: var(--primary-black);
+        color: var(--white);
+        border: 2px solid var(--havana);
+      }
+
+      .btn-secondary:hover {
+        background-color: var(--secondary-black);
+        color: var(--havana);
+      }
+
+      /* Modal */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .modal-content {
+        background-color: var(--white);
+        margin: 5% auto;
+        padding: 2rem;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 800px;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .close {
+        color: var(--text-light);
+        float: left;
+        font-size: 2rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .close:hover {
+        color: var(--primary-black);
+      }
+
+      .modal-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-top: 1rem;
+      }
+
+      .modal-image {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+
+      .modal-info h2 {
+        color: var(--primary-black);
+        margin-bottom: 1rem;
+        font-size: 2rem;
+      }
+
+      .modal-info p {
+        color: var(--text-light);
+        margin-bottom: 1rem;
+        line-height: 1.8;
+      }
+
+      .color-selector {
+        margin-bottom: 2rem;
+      }
+
+      .color-selector h3 {
+        color: var(--primary-black);
+        margin-bottom: 1rem;
+      }
+
+      .color-selector .product-colors {
+        display: flex;
+        gap: 0.8rem;
+      }
+
+      .price-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1rem;
+        border-top: 2px solid var(--light-gray);
+      }
+
+      .price {
+        font-size: 2rem;
+        color: var(--havana);
+        font-weight: bold;
+      }
+
+      .add-to-cart-btn {
+        padding: 1rem 2rem;
+        background-color: var(--havana);
+        color: var(--primary-black);
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .add-to-cart-btn:hover {
+        background-color: #e6c200;
+        transform: scale(1.05);
+      }
+
+      /* Cart Sidebar */
+      .cart-sidebar {
+        position: fixed;
+        right: -400px;
+        top: 0;
+        width: 400px;
+        height: 100vh;
+        background-color: var(--white);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+        z-index: 999;
+        transition: right 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+      }
+
+      .cart-sidebar.active {
+        right: 0;
+      }
+
+      .cart-header {
+        background-color: var(--primary-black);
+        color: var(--havana);
+        padding: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid var(--havana);
+      }
+
+      .cart-header h2 {
+        font-size: 1.5rem;
+      }
+
+      .close-cart {
+        background: none;
+        border: none;
+        color: var(--havana);
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .close-cart:hover {
+        color: var(--white);
+      }
+
+      .cart-items {
+        flex: 1;
+        padding: 1rem;
+        overflow-y: auto;
+      }
+
+      .cart-item {
+        background-color: var(--light-gray);
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 5px;
+        border-left: 4px solid var(--havana);
+        animation: slideIn 0.3s ease;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .cart-item-title {
+        font-weight: bold;
+        color: var(--primary-black);
+        margin-bottom: 0.5rem;
+      }
+
+      .cart-item-color {
+        font-size: 0.9rem;
+        color: var(--text-light);
+        margin-bottom: 0.5rem;
+      }
+
+      .cart-item-price {
+        color: var(--havana);
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
+      .cart-item-quantity {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .quantity-btn {
+        background-color: var(--primary-black);
+        color: var(--white);
+        border: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      .quantity-btn:hover {
+        background-color: var(--havana);
+        color: var(--primary-black);
+      }
+
+      .remove-btn {
+        background-color: #d32f2f;
+        color: var(--white);
+        border: none;
+        padding: 0.3rem 0.8rem;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+
+      .remove-btn:hover {
+        background-color: #b71c1c;
+      }
+
+      .cart-footer {
+        background-color: var(--light-gray);
+        padding: 1.5rem;
+        border-top: 2px solid var(--havana);
+      }
+
+      .cart-total {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: var(--primary-black);
+        margin-bottom: 1rem;
+      }
+
+      .checkout-btn {
+        width: 100%;
+        padding: 1rem;
+        background-color: var(--havana);
+        color: var(--primary-black);
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        margin-bottom: 0.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .checkout-btn:hover {
+        background-color: #e6c200;
+        transform: scale(1.02);
+      }
+
+      .clear-cart-btn {
+        width: 100%;
+        padding: 0.8rem;
+        background-color: var(--secondary-black);
+        color: var(--white);
+        border: 2px solid var(--havana);
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .clear-cart-btn:hover {
+        background-color: var(--primary-black);
+      }
+
+      .empty-cart {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-light);
+      }
+
+      .empty-cart p {
+        font-size: 1.2rem;
+      }
+
+      /* Contact Section */
+      .contact-section {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 2rem;
+        background-color: var(--light-gray);
+        border-radius: 10px;
+      }
+
+      .contact-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .contact-card {
+        background-color: var(--white);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid var(--havana);
+        transition: all 0.3s ease;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+      }
+
+      .contact-card h3 {
+        color: var(--primary-black);
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+      }
+
+      .contact-card p {
+        color: var(--text-light);
+        line-height: 1.8;
+      }
+
+      .contact-card a {
+        color: var(--havana);
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      .contact-card a:hover {
+        color: var(--primary-black);
+        text-decoration: underline;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--primary-black);
+        color: var(--white);
+        text-align: center;
+        padding: 2rem;
+        border-top: 2px solid var(--havana);
+        margin-top: 3rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-menu {
+          gap: 1rem;
+        }
+
+        .logo h1 {
+          font-size: 1.3rem;
+        }
+
+        .section-header h2 {
+          font-size: 1.8rem;
+        }
+
+        .products-grid {
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 1rem;
+        }
+
+        .product-image {
+          height: 200px;
+        }
+
+        .modal-body {
+          grid-template-columns: 1fr;
+        }
+
+        .cart-sidebar {
+          width: 100%;
+          right: -100%;
+        }
+
+        .modal-content {
+          width: 95%;
+          margin: 20% auto;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .nav-container {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .nav-menu {
+          flex-direction: column;
+          gap: 0.5rem;
+          width: 100%;
+        }
+
+        .nav-link {
+          display: block;
+          text-align: center;
+        }
+
+        .logo h1 {
+          font-size: 1rem;
+        }
+
+        .section-header h2 {
+          font-size: 1.5rem;
+        }
+
+        .products-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .product-info {
+          padding: 1rem;
+        }
+
+        .product-title {
+          font-size: 1.1rem;
+        }
+
+        .product-price {
+          font-size: 1.3rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <h1>🎩 House for Men's Suits</h1>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="#blazers" class="nav-link">البليزر</a></li>
+          <li><a href="#shirts" class="nav-link">القمصان</a></li>
+          <li><a href="#pants" class="nav-link">البنطلون</a></li>
+          <li><a href="#jackets" class="nav-link">الجاكت</a></li>
+          <li><a href="#contact" class="nav-link">التواصل</a></li>
+          <li>
+            <a href="#" class="nav-link cart-link" onclick="toggleCart(event)"
+              >🛒 السلة (<span id="cart-count">0</span>)</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <img src="img1.jpg" alt="Hero" class="hero-image" />
+      </div>
+    </section>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cart-sidebar" class="cart-sidebar">
+      <div class="cart-header">
+        <h2>سلة التسوق</h2>
+        <button class="close-cart" onclick="toggleCart()">✕</button>
+      </div>
+      <div id="cart-items" class="cart-items"></div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <strong>الإجمالي:</strong>
+          <span id="cart-total">0 ج.م</span>
+        </div>
+        <button class="checkout-btn" onclick="checkout()">إتمام الشراء</button>
+        <button class="clear-cart-btn" onclick="clearCart()">
+          تفريغ السلة
+        </button>
+      </div>
+    </div>
+
+    <!-- Blazers Section -->
+    <section id="blazers" class="products-section">
+      <div class="section-header">
+        <h2>🧥 البليزر</h2>
+        <p>اختر من أفضل تشكيلة البليزرات الرجالية</p>
+      </div>
+      <div class="products-grid" id="blazers-grid"></div>
+    </section>
+
+    <!-- Shirts Section -->
+    <section id="shirts" class="products-section">
+      <div class="section-header">
+        <h2>👔 القمصان</h2>
+        <p>قمصان رسمية وكاجوال عالية الجودة</p>
+      </div>
+      <div class="products-grid" id="shirts-grid"></div>
+    </section>
+
+    <!-- Pants Section -->
+    <section id="pants" class="products-section">
+      <div class="section-header">
+        <h2>👖 البنطلون</h2>
+        <p>بنطلونات رسمية بأفضل الأسعار</p>
+      </div>
+      <div class="products-grid" id="pants-grid"></div>
+    </section>
+
+    <!-- Jackets Section -->
+    <section id="jackets" class="products-section">
+      <div class="section-header">
+        <h2>🧤 الجاكت</h2>
+        <p>جاكتات فاخرة لكل المناسبات</p>
+      </div>
+      <div class="products-grid" id="jackets-grid"></div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <div class="section-header">
+        <h2>📍 تواصل معنا</h2>
+      </div>
+      <div class="contact-info">
+        <div class="contact-card">
+          <h3>📍 العنوان</h3>
+          <p>بني سويف – ميدان الزراعيين - شارع احمد عرابى</p>
+        </div>
+        <div class="contact-card">
+          <h3>📞 رقم الهاتف</h3>
+          <p><a href="tel:01014447414">01014447414</a></p>
+        </div>
+        <div class="contact-card">
+          <h3>📱 تابعنا على فيسبوك</h3>
+          <p>
+            <a href="https://www.facebook.com/share/16q9YnMjfp/" target="_blank"
+              >زيارة صفحتنا</a
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; Design By Habibat Alrhman.</p>
+      <p>
+        <a href="https://www.facebook.com/share/1SRTYbdkCF/" target="_blank"
+          >زيارة صفحتنا</a
+        >
+      </p>
+    </footer>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-body">
+          <img id="modal-image" src="" alt="Product" class="modal-image" />
+          <div class="modal-info">
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <div id="modal-colors" class="color-selector"></div>
+            <div class="price-section">
+              <span id="modal-price" class="price"></span>
+              <button class="add-to-cart-btn" onclick="addFromModal()">
+                أضف إلى السلة
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Product Data
+      const products = {
+        blazers: [
+          {
+            id: "blazer-1",
+            title: "البليزر الأسود الكلاسيكي",
+            price: 450,
+            image: "blazer-1.jpg",
+            colors: ["#000000", "#1a1a1a", "#333333"],
+            description: "بليزر أسود فاخر مصنوع من أفضل الأقمشة",
+          },
+          {
+            id: "blazer-2",
+            title: "البليزر البني الفاتح",
+            price: 480,
+            image: "blazer-2.jpg",
+            colors: ["#8B7355", "#A0826D", "#D2B48C"],
+            description: "بليزر بني فاتح أنيق وكلاسيكي",
+          },
+          {
+            id: "blazer-3",
+            title: "البليزر الرمادي الحديث",
+            price: 500,
+            image: "blazer-3.jpg",
+            colors: ["#808080", "#A9A9A9", "#C0C0C0"],
+            description: "بليزر رمادي حديث لمظهر احترافي",
+          },
+          {
+            id: "blazer-4",
+            title: "البليزر الأزرق الداكن",
+            price: 520,
+            image: "blazer-4.jpg",
+            colors: ["#001a4d", "#003d99", "#0052cc"],
+            description: "بليزر أزرق داكن فاخر وأنيق",
+          },
+          {
+            id: "blazer-5",
+            title: "البليزر البيج الفاخر",
+            price: 490,
+            image: "blazer-5.jpg",
+            colors: ["#F5DEB3", "#DEB887", "#D2B48C"],
+            description: "بليزر بيج فاخر للمناسبات الخاصة",
+          },
+          {
+            id: "blazer-6",
+            title: "البليزر الأسود المخطط",
+            price: 530,
+            image: "blazer-6.jpg",
+            colors: ["#000000", "#1a1a1a", "#2d2d2d"],
+            description: "بليزر أسود مخطط بتصميم عصري",
+          },
+        ],
+        shirts: [
+          {
+            id: "shirt-1",
+            title: "القميص الأبيض الكلاسيكي",
+            price: 200,
+            image: "images/shirt-1.jpg",
+            colors: ["#ffffff", "#f5f5f5", "#e8e8e8"],
+            description: "قميص أبيض كلاسيكي من أفضل الأقمشة",
+          },
+          {
+            id: "shirt-2",
+            title: "القميص الأسود الفاخر",
+            price: 220,
+            image: "images/shirt-2.jpg",
+            colors: ["#000000", "#1a1a1a", "#2d2d2d"],
+            description: "قميص أسود فاخر للمناسبات الرسمية",
+          },
+          {
+            id: "shirt-3",
+            title: "القميص الأزرق الداكن",
+            price: 210,
+            image: "images/shirt-3.jpg",
+            colors: ["#001a4d", "#003d99", "#0052cc"],
+            description: "قميص أزرق داكن أنيق وعملي",
+          },
+          {
+            id: "shirt-4",
+            title: "القميص الرمادي الحديث",
+            price: 215,
+            image: "images/shirt-4.jpg",
+            colors: ["#808080", "#A9A9A9", "#C0C0C0"],
+            description: "قميص رمادي حديث ومتعدد الاستخدامات",
+          },
+          {
+            id: "shirt-5",
+            title: "القميص البيبي بلو",
+            price: 225,
+            image: "images/shirt-5.jpg",
+            colors: ["#8B4513", "#A0522D", "#CD853F"],
+            description: "قميص بني دافئ للمظهر الكلاسيكي",
+          },
+          {
+            id: "shirt-6",
+            title: "القميص الرصاصي",
+            price: 230,
+            image: "images/shirt-6.jpg",
+            colors: ["#ffffff", "#f5f5f5", "#e8e8e8"],
+            description: "قميص أبيض مخطط بتصميم عصري",
+          },
+        ],
+        pants: [
+          {
+            id: "pants-1",
+            title: "البنطلون الأسود الكلاسيكي",
+            price: 280,
+            image: "img2.jpg",
+            colors: ["#000000", "#1a1a1a", "#2d2d2d"],
+            description: "بنطلون أسود كلاسيكي للمناسبات الرسمية",
+          },
+          {
+            id: "pants-2",
+            title: "البنطلون الرمادي الفاخر",
+            price: 300,
+            image: "img3.jpg",
+            colors: ["#808080", "#A9A9A9", "#C0C0C0"],
+            description: "بنطلون رمادي فاخر وأنيق",
+          },
+          {
+            id: "pants-3",
+            title: "البنطلون البني الدافئ",
+            price: 290,
+            image: "img4.jpg",
+            colors: ["#8B7355", "#A0826D", "#D2B48C"],
+            description: "بنطلون بني دافئ للمظهر الكلاسيكي",
+          },
+          {
+            id: "pants-4",
+            title: "البنطلون الأزرق الداكن",
+            price: 310,
+            image: "img5.jpg",
+            colors: ["#001a4d", "#003d99", "#0052cc"],
+            description: "بنطلون أزرق داكن أنيق وعملي",
+          },
+          {
+            id: "pants-5",
+            title: "البنطلون البيج الفاخر",
+            price: 295,
+            image: "img6.jpg",
+            colors: ["#F5DEB3", "#DEB887", "#D2B48C"],
+            description: "بنطلون بيج فاخر للمناسبات الخاصة",
+          },
+          {
+            id: "pants-6",
+            title: "البنطلون الأسود المخطط",
+            price: 320,
+            image: "img7.jpg",
+            colors: ["#000000", "#1a1a1a", "#2d2d2d"],
+            description: "بنطلون أسود مخطط بتصميم عصري",
+          },
+        ],
+        jackets: [
+          {
+            id: "jacket-1",
+            title: "الجاكت الأسود الفاخر",
+            price: 550,
+            image: "img8.jpg",
+            colors: ["#000000", "#1a1a1a", "#2d2d2d"],
+            description: "جاكت أسود فاخر للمناسبات الخاصة",
+          },
+          {
+            id: "jacket-2",
+            title: "الجاكت البني الدافئ",
+            price: 570,
+            image: "img9.jpg",
+            colors: ["#8B7355", "#A0826D", "#D2B48C"],
+            description: "جاكت بني دافئ وأنيق",
+          },
+          {
+            id: "jacket-3",
+            title: "الجاكت الرمادي الحديث",
+            price: 580,
+            image: "img10.jpg",
+            colors: ["#808080", "#A9A9A9", "#C0C0C0"],
+            description: "جاكت رمادي حديث ومتعدد الاستخدامات",
+          },
+          {
+            id: "jacket-4",
+            title: "الجاكت الأزرق الداكن",
+            price: 600,
+            image: "img11.jpg",
+            colors: ["#001a4d", "#003d99", "#0052cc"],
+            description: "جاكت أزرق داكن فاخر وأنيق",
+          },
+          {
+            id: "jacket-5",
+            title: "الجاكت الاسود",
+            price: 590,
+            image: "img12.jpg",
+            colors: ["#F5DEB3", "#DEB887", "#D2B48C"],
+            description: "جاكت بيج فاخر للمناسبات الخاصة",
+          },
+          {
+            id: "jacket-6",
+            title: "الجاكت الجملي",
+            price: 610,
+            image: "img13.jpg",
+            colors: ["#000000", "#1a1a1a", "#2d2d2d"],
+            description: "جاكت أسود مخطط بتصميم عصري",
+          },
+        ],
+      };
+
+      // Cart Array
+      let cart = [];
+      let selectedColor = {};
+
+      // Initialize the page
+      document.addEventListener("DOMContentLoaded", function () {
+        renderAllProducts();
+        loadCartFromLocalStorage();
+      });
+
+      // Render all products
+      function renderAllProducts() {
+        renderProducts("blazers", "blazers-grid");
+        renderProducts("shirts", "shirts-grid");
+        renderProducts("pants", "pants-grid");
+        renderProducts("jackets", "jackets-grid");
+      }
+
+      // Render products for a category
+      function renderProducts(category, gridId) {
+        const grid = document.getElementById(gridId);
+        grid.innerHTML = "";
+
+        products[category].forEach((product) => {
+          const card = createProductCard(product, category);
+          grid.appendChild(card);
+        });
+      }
+
+      // Create product card element
+      function createProductCard(product, category) {
+        const card = document.createElement("div");
+        card.className = "product-card";
+
+        let colorsHTML = "";
+        product.colors.forEach((color) => {
+          colorsHTML += `<div class="color-swatch" style="background-color: ${color};" title="${color}" onclick="selectColor('${product.id}', '${color}', event)"></div>`;
+        });
+
+        card.innerHTML = `
+                <img src="${product.image}" alt="${product.title}" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">${product.title}</h3>
+                    <div class="product-price">${product.price} ج.م</div>
+                    <div class="product-colors" id="colors-${product.id}">
+                        ${colorsHTML}
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-primary" onclick="addToCart('${product.id}', '${category}')">أضف للسلة</button>
+                        <button class="btn btn-secondary" onclick="openModal('${product.id}', '${category}')">عرض التفاصيل</button>
+                    </div>
+                </div>
+            `;
+
+        return card;
+      }
+
+      // Select color for a product
+      function selectColor(productId, color, event) {
+        event.stopPropagation();
+        selectedColor[productId] = color;
+
+        // Update UI
+        const swatches = document.querySelectorAll(
+          `#colors-${productId} .color-swatch`,
+        );
+        swatches.forEach((swatch) => {
+          swatch.classList.remove("selected");
+        });
+        event.target.classList.add("selected");
+      }
+
+      // Add to cart
+      function addToCart(productId, category) {
+        const product = products[category].find((p) => p.id === productId);
+        const color = selectedColor[productId] || product.colors[0];
+
+        // Check if item already in cart
+        const existingItem = cart.find(
+          (item) => item.id === productId && item.color === color,
+        );
+
+        if (existingItem) {
+          existingItem.quantity++;
+        } else {
+          cart.push({
+            id: productId,
+            title: product.title,
+            price: product.price,
+            color: color,
+            quantity: 1,
+            category: category,
+          });
+        }
+
+        updateCartUI();
+        saveCartToLocalStorage();
+        showNotification("تم إضافة المنتج إلى السلة بنجاح!");
+      }
+
+      // Add to cart from modal
+      function addFromModal() {
+        const productId =
+          document.getElementById("modal-title").dataset.productId;
+        const category =
+          document.getElementById("modal-title").dataset.category;
+        addToCart(productId, category);
+        closeModal();
+      }
+
+      // Update cart UI
+      function updateCartUI() {
+        const cartCount = document.getElementById("cart-count");
+        const cartItems = document.getElementById("cart-items");
+        const cartTotal = document.getElementById("cart-total");
+
+        let totalItems = 0;
+        let totalPrice = 0;
+
+        cartItems.innerHTML = "";
+
+        if (cart.length === 0) {
+          cartItems.innerHTML =
+            '<div class="empty-cart"><p>السلة فارغة</p></div>';
+          cartTotal.textContent = "0 ج.م";
+          cartCount.textContent = "0";
+          return;
+        }
+
+        cart.forEach((item, index) => {
+          totalItems += item.quantity;
+          totalPrice += item.price * item.quantity;
+
+          const cartItem = document.createElement("div");
+          cartItem.className = "cart-item";
+          cartItem.innerHTML = `
+                    <div class="cart-item-title">${item.title}</div>
+                    <div class="cart-item-color">اللون: <span style="display: inline-block; width: 15px; height: 15px; background-color: ${item.color}; border-radius: 50%; margin-right: 5px;"></span></div>
+                    <div class="cart-item-price">${item.price} ج.م</div>
+                    <div class="cart-item-quantity">
+                        <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
+                    </div>
+                    <button class="remove-btn" onclick="removeFromCart(${index})">حذف</button>
+                `;
+          cartItems.appendChild(cartItem);
+        });
+
+        cartCount.textContent = totalItems;
+        cartTotal.textContent = totalPrice + " ج.م";
+        saveCartToLocalStorage();
+      }
+
+      // Increase quantity
+      function increaseQuantity(index) {
+        cart[index].quantity++;
+        updateCartUI();
+      }
+
+      // Decrease quantity
+      function decreaseQuantity(index) {
+        if (cart[index].quantity > 1) {
+          cart[index].quantity--;
+        } else {
+          removeFromCart(index);
+        }
+        updateCartUI();
+      }
+
+      // Remove from cart
+      function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCartUI();
+      }
+
+      // Clear cart
+      function clearCart() {
+        if (confirm("هل تريد تفريغ السلة بالكامل؟")) {
+          cart = [];
+          updateCartUI();
+        }
+      }
+
+      // Toggle cart sidebar
+      function toggleCart(event) {
+        if (event) event.preventDefault();
+        const cartSidebar = document.getElementById("cart-sidebar");
+        cartSidebar.classList.toggle("active");
+      }
+
+      // Checkout
+      function checkout() {
+        if (cart.length === 0) {
+          alert("السلة فارغة!");
+          return;
+        }
+
+        let message = "تفاصيل الطلب:\n\n";
+        let total = 0;
+
+        cart.forEach((item) => {
+          message += `${item.title} - ${item.quantity} × ${item.price} ج.م = ${item.quantity * item.price} ج.م\n`;
+          total += item.quantity * item.price;
+        });
+
+        message += `\nالإجمالي: ${total} ج.م\n\n`;
+        message += "شكراً لتسوقك معنا! يرجى التواصل معنا على:\n";
+        message += "📞 01014447414\n";
+        message += "📍 بني سويف – ميدان الزراعيين - شارع احمد عرابى";
+
+        alert(message);
+
+        // Clear cart after checkout
+        cart = [];
+        updateCartUI();
+        toggleCart();
+      }
+
+      // Open modal
+      function openModal(productId, category) {
+        const product = products[category].find((p) => p.id === productId);
+        const modal = document.getElementById("product-modal");
+
+        document.getElementById("modal-image").src = product.image;
+        document.getElementById("modal-title").textContent = product.title;
+        document.getElementById("modal-title").dataset.productId = productId;
+        document.getElementById("modal-title").dataset.category = category;
+        document.getElementById("modal-description").textContent =
+          product.description;
+        document.getElementById("modal-price").textContent =
+          product.price + " ج.م";
+
+        // Create color swatches
+        const colorSelector = document.getElementById("modal-colors");
+        colorSelector.innerHTML = "<h3>اختر اللون:</h3>";
+        const colorsDiv = document.createElement("div");
+        colorsDiv.className = "product-colors";
+
+        product.colors.forEach((color) => {
+          const swatch = document.createElement("div");
+          swatch.className = "color-swatch";
+          swatch.style.backgroundColor = color;
+          swatch.title = color;
+          swatch.onclick = (e) => {
+            document
+              .querySelectorAll("#modal-colors .color-swatch")
+              .forEach((s) => s.classList.remove("selected"));
+            swatch.classList.add("selected");
+            selectedColor[productId] = color;
+          };
+          colorsDiv.appendChild(swatch);
+        });
+
+        colorSelector.appendChild(colorsDiv);
+
+        modal.style.display = "block";
+      }
+
+      // Close modal
+      function closeModal() {
+        const modal = document.getElementById("product-modal");
+        modal.style.display = "none";
+      }
+
+      // Close modal when clicking outside
+      window.onclick = function (event) {
+        const modal = document.getElementById("product-modal");
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      };
+
+      // Save cart to localStorage
+      function saveCartToLocalStorage() {
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
+
+      // Load cart from localStorage
+      function loadCartFromLocalStorage() {
+        const savedCart = localStorage.getItem("cart");
+        if (savedCart) {
+          cart = JSON.parse(savedCart);
+          updateCartUI();
+        }
+      }
+
+      // Show notification
+      function showNotification(message) {
+        const notification = document.createElement("div");
+        notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background-color: #4CAF50;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 5px;
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+            `;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+          notification.remove();
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>
