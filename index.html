@@ -1101,6 +1101,9 @@
         <button class="clear-cart-btn" onclick="clearCart()">
           تفريغ السلة
         </button>
+        <button class="checkout-btn" onclick="orderNowWhatsApp()">
+          اطلب الآن عبر واتساب
+        </button>
       </div>
     </div>
 
@@ -1233,9 +1236,9 @@
             image: "blazer-2.jpg",
 
             colors: [
-              { color: "#000000", image: "img15.jpg" },
-              { color: "#ffffff", image: "img16.jpg" },
-              { color: "#808080", image: "img17.jpg" },
+              { color: "#000000", image: "blazer-3.jpg" },
+              { color: "#ffffff", image: "blazer-4.jpg" },
+              { color: "#808080", image: "blazer-5.jpg" },
             ],
 
             description: "بليزر بني فاتح أنيق وكلاسيكي",
@@ -1698,33 +1701,37 @@
 
         product.colors.forEach((c) => {
           colorsHTML += `
-                                  <div class="color-swatch"
-                                    style="background-color: ${c.color};"
-                                    onclick="selectColor('${product.id}', '${c.image}', event)">
-                                  </div>
-                                `;
+                                        <div class="color-swatch"
+                                          style="background-color: ${c.color};"
+                                          onclick="selectColor('${product.id}', '${c.image}', event)">
+                                        </div>
+                                      `;
         });
 
         card.innerHTML = `
-                                            <div class="product-image-wrapper">
-                                              <img src="${product.image}" alt="${product.title}" class="product-image">
-                                              <div class="color-overlay" id="overlay-${product.id}"></div>
-                                            </div>
+                                                  <div class="product-image-wrapper">
+                                                    <img src="${product.image}" alt="${product.title}" class="product-image">
+                                                    <div class="color-overlay" id="overlay-${product.id}"></div>
+                                                  </div>
 
-                                            <div class="product-info">
-                                              <h3 class="product-title">${product.title}</h3>
-                                              <div class="product-price">${product.price} ج.م</div>
+                                                  <div class="product-info">
+                                                    <h3 class="product-title">${product.title}</h3>
+                                                    <div class="product-price">${product.price} ج.م</div>
 
-                                              <div class="product-colors" id="colors-${product.id}">
-                                                ${colorsHTML}
-                                              </div>
+                                                    <div class="product-colors" id="colors-${product.id}">
+                                                      ${colorsHTML}
+                                                    </div>
 
-                                              <div class="product-actions">
-                                                <button class="btn btn-primary" onclick="addToCart('${product.id}', '${category}')">أضف للسلة</button>
-                                                <button class="btn btn-secondary" onclick="openModal('${product.id}', '${category}')">عرض التفاصيل</button>
-                                              </div>
-                                            </div>
-                                          `;
+                                                    <div class="product-actions">
+                                                      <button class="btn btn-primary" onclick="addToCart('${product.id}', '${category}')">أضف للسلة</button>
+                                                      <button class="btn btn-secondary" onclick="openModal('${product.id}', '${category}')">عرض التفاصيل</button>
+                                                      <button class="btn btn-primary" 
+onclick="orderProductWhatsApp('${product.id}', '${category}')">
+اطلب الآن
+</button>
+                                                    </div>
+                                                  </div>
+                                                `;
 
         return card;
       }
@@ -1843,25 +1850,25 @@
 
           cartItem.innerHTML = `
 
-                                                              <div class="cart-item-title">${item.title}</div>
+                                                                    <div class="cart-item-title">${item.title}</div>
 
-                                                              <div class="cart-item-color">اللون: <span style="display: inline-block; width: 15px; height: 15px; background-color: ${item.color}; border-radius: 50%; margin-right: 5px;"></span></div>
+                                                                    <div class="cart-item-color">اللون: <span style="display: inline-block; width: 15px; height: 15px; background-color: ${item.color}; border-radius: 50%; margin-right: 5px;"></span></div>
 
-                                                              <div class="cart-item-price">${item.price} ج.م</div>
+                                                                    <div class="cart-item-price">${item.price} ج.م</div>
 
-                                                              <div class="cart-item-quantity">
+                                                                    <div class="cart-item-quantity">
 
-                                                                  <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
+                                                                        <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
 
-                                                                  <span>${item.quantity}</span>
+                                                                        <span>${item.quantity}</span>
 
-                                                                  <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
+                                                                        <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
 
-                                                              </div>
+                                                                    </div>
 
-                                                              <button class="remove-btn" onclick="removeFromCart(${index})">حذف</button>
+                                                                    <button class="remove-btn" onclick="removeFromCart(${index})">حذف</button>
 
-                                                          `;
+                                                                `;
 
           cartItems.appendChild(cartItem);
         });
@@ -2057,25 +2064,25 @@
 
         notification.style.cssText = `
 
-                                                          position: fixed;
+                                                                position: fixed;
 
-                                                          top: 20px;
+                                                                top: 20px;
 
-                                                          right: 20px;
+                                                                right: 20px;
 
-                                                          background-color: #4CAF50;
+                                                                background-color: #4CAF50;
 
-                                                          color: white;
+                                                                color: white;
 
-                                                          padding: 15px 20px;
+                                                                padding: 15px 20px;
 
-                                                          border-radius: 5px;
+                                                                border-radius: 5px;
 
-                                                          z-index: 10000;
+                                                                z-index: 10000;
 
-                                                          animation: slideIn 0.3s ease;
+                                                                animation: slideIn 0.3s ease;
 
-                                                      `;
+                                                            `;
 
         notification.textContent = message;
 
@@ -2121,6 +2128,85 @@
       card.dataset.images = JSON.stringify(product.colors);
       card.dataset.defaultImage = product.image;
       card.dataset.index = 0;
+
+      function orderNowWhatsApp() {
+        if (cart.length === 0) {
+          alert("السلة فارغة!");
+          return;
+        }
+
+        let message = "🛒 طلب جديد من المتجر:\n\n";
+        let total = 0;
+
+        cart.forEach((item) => {
+          message += `• ${item.title}\n`;
+          message += `  اللون: ${item.color}\n`;
+          message += `  الكمية: ${item.quantity}\n`;
+          message += `  السعر: ${item.price * item.quantity} ج.م\n\n`;
+
+          total += item.price * item.quantity;
+        });
+
+        message += `💰 الإجمالي: ${total} ج.م\n\n`;
+        message += "📍 العنوان: \n";
+        message += "📞 رقم العميل: \n";
+
+        const phoneNumber = "01014447414"; // 👈 غيريه برقمك
+
+        const url =
+          "https://wa.me/" +
+          phoneNumber +
+          "?text=" +
+          encodeURIComponent(message);
+
+        window.open(url, "_blank");
+      }
+      function orderProductWhatsApp(productId, category) {
+        const product = products[category].find((p) => p.id === productId);
+
+        const selected = selectedColor[productId] || product.colors[0];
+
+        let message = `🛍 طلب منتج:\n\n`;
+        message += `• ${product.title}\n`;
+        message += `• اللون: ${selected.color}\n`;
+        message += `• السعر: ${product.price} ج.م\n\n`;
+        message += `📍 العنوان:\n📞 رقم العميل:\n`;
+
+        const phone = "201014447414";
+
+        const url =
+          "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+
+        window.open(url, "_blank");
+      }
+      function orderNowWhatsApp() {
+        if (cart.length === 0) {
+          alert("السلة فارغة!");
+          return;
+        }
+
+        let message = "🛒 طلب من السلة:\n\n";
+        let total = 0;
+
+        cart.forEach((item) => {
+          message += `• ${item.title}\n`;
+          message += `  اللون: ${item.color}\n`;
+          message += `  الكمية: ${item.quantity}\n`;
+          message += `  السعر: ${item.price * item.quantity} ج.م\n\n`;
+
+          total += item.price * item.quantity;
+        });
+
+        message += `💰 الإجمالي: ${total} ج.م\n\n`;
+        message += "📍 العنوان:\n📞 رقم العميل:\n";
+
+        const phone = "01014447414";
+
+        window.open(
+          "https://wa.me/" + phone + "?text=" + encodeURIComponent(message),
+          "_blank",
+        );
+      }
     </script>
   </body>
 </html>
