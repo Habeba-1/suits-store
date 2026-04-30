@@ -662,6 +662,36 @@
         border-top: 2px solid var(--havana);
         margin-top: 3rem;
       }
+      .product-image-wrapper {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .product-image {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* طبقة اللون */
+      .color-overlay {
+        position: absolute;
+        inset: 0;
+        background: transparent;
+        mix-blend-mode: multiply;
+        opacity: 0;
+        transition: 0.4s ease;
+      }
+      .product-image {
+        transition:
+          transform 0.5s ease,
+          opacity 0.3s ease;
+      }
+
+      .product-card:hover .product-image {
+        opacity: 0.95;
+      }
 
       /* Responsive Design */
       @media (max-width: 768px) {
@@ -775,6 +805,53 @@
       }
       .navbar {
         transition: all 0.3s ease;
+      }
+      .product-card {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        transition:
+          transform 0.4s ease,
+          box-shadow 0.4s ease;
+      }
+
+      .product-image-wrapper {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .product-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        transition:
+          transform 0.6s ease,
+          opacity 0.4s ease;
+      }
+
+      /* Zoom عند الهوفر */
+      .product-card:hover .product-image {
+        transform: scale(1.08);
+      }
+
+      /* ظل زي Zara */
+      .product-card:hover {
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        transform: translateY(-5px);
+      }
+
+      /* ألوان Zara minimal */
+      .color-swatch {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        border: 1px solid #ddd;
+        transition: all 0.3s ease;
+      }
+
+      .color-swatch:hover {
+        transform: scale(1.2);
+        border-color: #000;
       }
       @media (max-width: 768px) {
         .products-grid {
@@ -930,6 +1007,46 @@
       @media (max-width: 480px) {
         .product-image {
           height: 180px;
+        }
+      }
+      @media (max-width: 768px) {
+        .products-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .products-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 8px;
+        }
+
+        .product-image {
+          height: 180px;
+        }
+      }
+      @media (max-width: 768px) {
+        .product-card {
+          border-radius: 10px;
+          transition: transform 0.3s ease;
+        }
+
+        .product-card:active {
+          transform: scale(0.98);
+        }
+
+        .product-title {
+          font-size: 0.95rem;
+        }
+
+        .product-price {
+          font-size: 1rem;
+        }
+
+        .product-actions .btn {
+          padding: 6px;
+          font-size: 0.8rem;
         }
       }
     </style>
@@ -1095,9 +1212,13 @@
 
             price: 450,
 
-            image: "blazer-1.jpg",
+            image: "img14.jpg",
 
-            colors: ["#000000", "#1a1a1a", "#333333"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "بليزر أسود فاخر مصنوع من أفضل الأقمشة",
           },
@@ -1111,7 +1232,11 @@
 
             image: "blazer-2.jpg",
 
-            colors: ["#8B7355", "#A0826D", "#D2B48C"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "بليزر بني فاتح أنيق وكلاسيكي",
           },
@@ -1125,7 +1250,11 @@
 
             image: "blazer-3.jpg",
 
-            colors: ["#808080", "#A9A9A9", "#C0C0C0"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "بليزر رمادي حديث لمظهر احترافي",
           },
@@ -1139,7 +1268,11 @@
 
             image: "blazer-4.jpg",
 
-            colors: ["#001a4d", "#003d99", "#0052cc"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "بليزر أزرق داكن فاخر وأنيق",
           },
@@ -1153,7 +1286,11 @@
 
             image: "blazer-5.jpg",
 
-            colors: ["#F5DEB3", "#DEB887", "#D2B48C"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "بليزر بيج فاخر للمناسبات الخاصة",
           },
@@ -1167,7 +1304,11 @@
 
             image: "blazer-6.jpg",
 
-            colors: ["#000000", "#1a1a1a", "#2d2d2d"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "بليزر أسود مخطط بتصميم عصري",
           },
@@ -1183,7 +1324,11 @@
 
             image: "shirt-1.jpg",
 
-            colors: ["#ffffff", "#f5f5f5", "#e8e8e8"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "قميص أبيض كلاسيكي من أفضل الأقمشة",
           },
@@ -1197,7 +1342,11 @@
 
             image: "shirt-2.jpg",
 
-            colors: ["#000000", "#1a1a1a", "#2d2d2d"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "قميص أسود فاخر للمناسبات الرسمية",
           },
@@ -1211,7 +1360,11 @@
 
             image: "shirt-3.jpg",
 
-            colors: ["#001a4d", "#003d99", "#0052cc"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "قميص أزرق داكن أنيق وعملي",
           },
@@ -1225,7 +1378,11 @@
 
             image: "shirt-4.jpg",
 
-            colors: ["#808080", "#A9A9A9", "#C0C0C0"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "قميص رمادي حديث ومتعدد الاستخدامات",
           },
@@ -1239,7 +1396,11 @@
 
             image: "shirt-5.jpg",
 
-            colors: ["#8B4513", "#A0522D", "#CD853F"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "قميص بني دافئ للمظهر الكلاسيكي",
           },
@@ -1253,7 +1414,11 @@
 
             image: "shirt-6.jpg",
 
-            colors: ["#ffffff", "#f5f5f5", "#e8e8e8"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "قميص أبيض مخطط بتصميم عصري",
           },
@@ -1269,7 +1434,11 @@
 
             image: "img2.jpg",
 
-            colors: ["#000000", "#1a1a1a", "#2d2d2d"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "بنطلون أسود كلاسيكي للمناسبات الرسمية",
           },
@@ -1283,7 +1452,11 @@
 
             image: "img3.jpg",
 
-            colors: ["#808080", "#A9A9A9", "#C0C0C0"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "بنطلون رمادي فاخر وأنيق",
           },
@@ -1297,7 +1470,11 @@
 
             image: "img4.jpg",
 
-            colors: ["#8B7355", "#A0826D", "#D2B48C"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "بنطلون بني دافئ للمظهر الكلاسيكي",
           },
@@ -1311,7 +1488,11 @@
 
             image: "img5.jpg",
 
-            colors: ["#001a4d", "#003d99", "#0052cc"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "بنطلون أزرق داكن أنيق وعملي",
           },
@@ -1325,8 +1506,11 @@
 
             image: "img6.jpg",
 
-            colors: ["#F5DEB3", "#DEB887", "#D2B48C"],
-
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
             description: "بنطلون بيج فاخر للمناسبات الخاصة",
           },
 
@@ -1339,7 +1523,11 @@
 
             image: "img7.jpg",
 
-            colors: ["#000000", "#1a1a1a", "#2d2d2d"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "بنطلون أسود مخطط بتصميم عصري",
           },
@@ -1355,7 +1543,11 @@
 
             image: "img8.jpg",
 
-            colors: ["#000000", "#1a1a1a", "#2d2d2d"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "جاكت أسود فاخر للمناسبات الخاصة",
           },
@@ -1369,7 +1561,11 @@
 
             image: "img9.jpg",
 
-            colors: ["#8B7355", "#A0826D", "#D2B48C"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "جاكت بني دافئ وأنيق",
           },
@@ -1383,7 +1579,11 @@
 
             image: "img10.jpg",
 
-            colors: ["#808080", "#A9A9A9", "#C0C0C0"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "جاكت رمادي حديث ومتعدد الاستخدامات",
           },
@@ -1397,7 +1597,11 @@
 
             image: "img11.jpg",
 
-            colors: ["#001a4d", "#003d99", "#0052cc"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "جاكت أزرق داكن فاخر وأنيق",
           },
@@ -1411,7 +1615,11 @@
 
             image: "img12.jpg",
 
-            colors: ["#F5DEB3", "#DEB887", "#D2B48C"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "جاكت بيج فاخر للمناسبات الخاصة",
           },
@@ -1425,7 +1633,11 @@
 
             image: "img13.jpg",
 
-            colors: ["#000000", "#1a1a1a", "#2d2d2d"],
+            colors: [
+              { color: "#000000", image: "img15.jpg" },
+              { color: "#ffffff", image: "img16.jpg" },
+              { color: "#808080", image: "img17.jpg" },
+            ],
 
             description: "جاكت أسود مخطط بتصميم عصري",
           },
@@ -1478,70 +1690,75 @@
         const card = document.createElement("div");
 
         card.className = "product-card";
+        card.dataset.images = JSON.stringify(product.colors);
+        card.dataset.defaultImage = product.image;
+        card.dataset.index = 0;
 
         let colorsHTML = "";
 
-        product.colors.forEach((color) => {
-          colorsHTML += `<div class="color-swatch" style="background-color: ${color};" title="${color}" onclick="selectColor('${product.id}', '${color}', event)"></div>`;
+        product.colors.forEach((c) => {
+          colorsHTML += `
+                                  <div class="color-swatch"
+                                    style="background-color: ${c.color};"
+                                    onclick="selectColor('${product.id}', '${c.image}', event)">
+                                  </div>
+                                `;
         });
 
         card.innerHTML = `
-  
-                <img src="${product.image}" alt="${product.title}" class="product-image">
-  
-                <div class="product-info">
-  
-                    <h3 class="product-title">${product.title}</h3>
-  
-                    <div class="product-price">${product.price} ج.م</div>
-  
-                    <div class="product-colors" id="colors-${product.id}">
-  
-                        ${colorsHTML}
-  
-                    </div>
-  
-                    <div class="product-actions">
-  
-                        <button class="btn btn-primary" onclick="addToCart('${product.id}', '${category}')">أضف للسلة</button>
-  
-                        <button class="btn btn-secondary" onclick="openModal('${product.id}', '${category}')">عرض التفاصيل</button>
-  
-                    </div>
-  
-                </div>
-  
-            `;
+                                            <div class="product-image-wrapper">
+                                              <img src="${product.image}" alt="${product.title}" class="product-image">
+                                              <div class="color-overlay" id="overlay-${product.id}"></div>
+                                            </div>
+
+                                            <div class="product-info">
+                                              <h3 class="product-title">${product.title}</h3>
+                                              <div class="product-price">${product.price} ج.م</div>
+
+                                              <div class="product-colors" id="colors-${product.id}">
+                                                ${colorsHTML}
+                                              </div>
+
+                                              <div class="product-actions">
+                                                <button class="btn btn-primary" onclick="addToCart('${product.id}', '${category}')">أضف للسلة</button>
+                                                <button class="btn btn-secondary" onclick="openModal('${product.id}', '${category}')">عرض التفاصيل</button>
+                                              </div>
+                                            </div>
+                                          `;
 
         return card;
       }
 
       // Select color for a product
 
-      function selectColor(productId, color, event) {
+      function selectColor(productId, image, event) {
         event.stopPropagation();
 
-        selectedColor[productId] = color;
+        const card = event.target.closest(".product-card");
+        const img = card.querySelector(".product-image");
 
-        // Update UI
+        // 👇 تغيير الصورة
+        img.src = image;
 
-        const swatches = document.querySelectorAll(
-          `#colors-${productId} .color-swatch`,
-        );
+        // 👇 حفظ اللون + الصورة
+        selectedColor[productId] = {
+          color: event.target.style.backgroundColor,
+          image: image,
+        };
 
-        swatches.forEach((swatch) => {
-          swatch.classList.remove("selected");
-        });
-
+        // UI
+        const swatches = card.querySelectorAll(".color-swatch");
+        swatches.forEach((s) => s.classList.remove("selected"));
         event.target.classList.add("selected");
       }
-
       // Add to cart
 
       function addToCart(productId, category) {
         const product = products[category].find((p) => p.id === productId);
 
-        const color = selectedColor[productId] || product.colors[0];
+        const selected = selectedColor[productId] || product.colors[0];
+        const color = selected.color;
+        const image = selected.image;
 
         // Check if item already in cart
 
@@ -1558,6 +1775,7 @@
             title: product.title,
 
             price: product.price,
+            image: image,
 
             color: color,
 
@@ -1624,26 +1842,26 @@
           cartItem.className = "cart-item";
 
           cartItem.innerHTML = `
-  
-                    <div class="cart-item-title">${item.title}</div>
-  
-                    <div class="cart-item-color">اللون: <span style="display: inline-block; width: 15px; height: 15px; background-color: ${item.color}; border-radius: 50%; margin-right: 5px;"></span></div>
-  
-                    <div class="cart-item-price">${item.price} ج.م</div>
-  
-                    <div class="cart-item-quantity">
-  
-                        <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
-  
-                        <span>${item.quantity}</span>
-  
-                        <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
-  
-                    </div>
-  
-                    <button class="remove-btn" onclick="removeFromCart(${index})">حذف</button>
-  
-                `;
+
+                                                              <div class="cart-item-title">${item.title}</div>
+
+                                                              <div class="cart-item-color">اللون: <span style="display: inline-block; width: 15px; height: 15px; background-color: ${item.color}; border-radius: 50%; margin-right: 5px;"></span></div>
+
+                                                              <div class="cart-item-price">${item.price} ج.م</div>
+
+                                                              <div class="cart-item-quantity">
+
+                                                                  <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
+
+                                                                  <span>${item.quantity}</span>
+
+                                                                  <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
+
+                                                              </div>
+
+                                                              <button class="remove-btn" onclick="removeFromCart(${index})">حذف</button>
+
+                                                          `;
 
           cartItems.appendChild(cartItem);
         });
@@ -1740,7 +1958,6 @@
 
         toggleCart();
       }
-
       // Open modal
 
       function openModal(productId, category) {
@@ -1753,7 +1970,6 @@
         document.getElementById("modal-title").textContent = product.title;
 
         document.getElementById("modal-title").dataset.productId = productId;
-
         document.getElementById("modal-title").dataset.category = category;
 
         document.getElementById("modal-description").textContent =
@@ -1762,41 +1978,38 @@
         document.getElementById("modal-price").textContent =
           product.price + " ج.م";
 
-        // Create color swatches
+        // ❌ مهم: متعملش let selectedColor هنا خالص
 
-        const colorSelector = document.getElementById("modal-colors");
+        const colorsDiv = document.getElementById("modal-colors");
+        colorsDiv.innerHTML = "<h3>اختر اللون:</h3>";
 
-        colorSelector.innerHTML = "<h3>اختر اللون:</h3>";
+        const wrapper = document.createElement("div");
+        wrapper.className = "product-colors";
 
-        const colorsDiv = document.createElement("div");
-
-        colorsDiv.className = "product-colors";
-
-        product.colors.forEach((color) => {
+        product.colors.forEach((c) => {
           const swatch = document.createElement("div");
-
           swatch.className = "color-swatch";
+          swatch.style.backgroundColor = c.color || c;
 
-          swatch.style.backgroundColor = color;
+          swatch.onclick = () => {
+            document.getElementById("modal-image").src = c.image;
 
-          swatch.title = color;
+            selectedColor[productId] = {
+              color: c.color,
+              image: c.image,
+            };
 
-          swatch.onclick = (e) => {
-            document
-
-              .querySelectorAll("#modal-colors .color-swatch")
-
+            wrapper
+              .querySelectorAll(".color-swatch")
               .forEach((s) => s.classList.remove("selected"));
 
             swatch.classList.add("selected");
-
-            selectedColor[productId] = color;
           };
 
-          colorsDiv.appendChild(swatch);
+          wrapper.appendChild(swatch);
         });
 
-        colorSelector.appendChild(colorsDiv);
+        colorsDiv.appendChild(wrapper);
 
         modal.style.display = "block";
       }
@@ -1843,26 +2056,26 @@
         const notification = document.createElement("div");
 
         notification.style.cssText = `
-  
-                position: fixed;
-  
-                top: 20px;
-  
-                right: 20px;
-  
-                background-color: #4CAF50;
-  
-                color: white;
-  
-                padding: 15px 20px;
-  
-                border-radius: 5px;
-  
-                z-index: 10000;
-  
-                animation: slideIn 0.3s ease;
-  
-            `;
+
+                                                          position: fixed;
+
+                                                          top: 20px;
+
+                                                          right: 20px;
+
+                                                          background-color: #4CAF50;
+
+                                                          color: white;
+
+                                                          padding: 15px 20px;
+
+                                                          border-radius: 5px;
+
+                                                          z-index: 10000;
+
+                                                          animation: slideIn 0.3s ease;
+
+                                                      `;
 
         notification.textContent = message;
 
@@ -1903,6 +2116,11 @@
           document.getElementById("nav-menu").classList.remove("active");
         });
       });
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.dataset.images = JSON.stringify(product.colors);
+      card.dataset.defaultImage = product.image;
+      card.dataset.index = 0;
     </script>
   </body>
 </html>
