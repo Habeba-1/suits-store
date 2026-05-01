@@ -1050,6 +1050,9 @@
           font-size: 0.8rem;
         }
       }
+      #jackets {
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -1065,16 +1068,12 @@
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
         <ul class="nav-menu" id="nav-menu">
-          <li><a href="#blazers" class="nav-link">البليزر</a></li>
-          <li><a href="#shirts" class="nav-link">القمصان</a></li>
-          <li><a href="#pants" class="nav-link">البنطلون</a></li>
-          <li><a href="#jackets" class="nav-link">الجاكت</a></li>
+          <li><a href="#blazers" class="nav-link">القمصان</a></li>
+          <li><a href="#shirts" class="nav-link">البنطلون</a></li>
+          <li><a href="#pants" class="nav-link">التيشيرت</a></li>
+          <li><a href="#jackets" class="nav-link">البليزر</a></li>
           <li><a href="#contact" class="nav-link">التواصل</a></li>
-          <li>
-            <a href="#" class="nav-link cart-link" onclick="toggleCart(event)"
-              >🛒 السلة (<span id="cart-count">0</span>)</a
-            >
-          </li>
+          <li>></li>
         </ul>
       </div>
     </nav>
@@ -1111,8 +1110,8 @@
     <!-- Blazers Section -->
     <section id="blazers" class="products-section">
       <div class="section-header">
-        <h2>🧥 البليزر</h2>
-        <p>اختر من أفضل تشكيلة البليزرات الرجالية</p>
+        <h2>👔👖 القمصان والبناطيل</h2>
+        <p>اختر من أفضل تشكيلة القمصان والبناطيل الرجالية</p>
       </div>
       <div class="products-grid" id="blazers-grid"></div>
     </section>
@@ -1120,8 +1119,8 @@
     <!-- Shirts Section -->
     <section id="shirts" class="products-section">
       <div class="section-header">
-        <h2>👔 القمصان</h2>
-        <p>قمصان رسمية وكاجوال عالية الجودة</p>
+        <h2>التيشيرت و البليزر👕🧥</h2>
+        <p>اختر من افضل التيشيرتات والبليزر</p>
       </div>
       <div class="products-grid" id="shirts-grid"></div>
     </section>
@@ -1129,8 +1128,8 @@
     <!-- Pants Section -->
     <section id="pants" class="products-section">
       <div class="section-header">
-        <h2>👖 البنطلون</h2>
-        <p>بنطلونات رسمية بأفضل الأسعار</p>
+        <h2>🎀 الاكسسوار</h2>
+        <p>اختر من افضل الاكسسوار</p>
       </div>
       <div class="products-grid" id="pants-grid"></div>
     </section>
@@ -1210,330 +1209,270 @@
       const products = {
         blazers: [
           {
-            id: "img19.jpg",
+            id: "img15.jpg",
 
-            title: "البليزر الأسود الكلاسيكي",
+            title: "قميص خامة كردونيه ليكرا",
 
-            price: 450,
+            price: 650,
 
-            image: "img19.jpg",
+            image: "img15.jpg",
 
             colors: [
-              { color: "#000000", image: "img15.jpg" },
-              { color: "#ffffff", image: "img16.jpg" },
-              { color: "#808080", image: "img17.jpg" },
+              { color: "#87CEEB", image: "img15.jpg" },
+              { color: "#ffffff", image: "img14.jpg" },
+
+              { color: "#808080", image: "img16.jpg" },
+              { color: "#1E4F8A", image: "img17.jpg" },
+              { color: "#5D0E41", image: "img18.jpg" },
+              { color: "#808000", image: "img19.jpg" },
+              { color: "#000000", image: "img20.jpg" },
             ],
 
-            description: "بليزر أسود فاخر مصنوع من أفضل الأقمشة",
+            description: "قميص خامة كردوانيه ليكرا من M الي 3X  كود 901  ",
           },
 
           {
-            id: "blazer-2",
+            id: "img5.jpg",
 
-            title: "البليزر البني الفاتح",
+            title: "  قميص مقلم كم طويل ",
 
             price: 480,
 
-            image: "blazer-2.jpg",
+            image: "img5.jpg",
 
             colors: [
-              { color: "#000000", image: "blazer-3.jpg" },
-              { color: "#ffffff", image: "blazer-4.jpg" },
-              { color: "#808080", image: "blazer-5.jpg" },
+              { color: "#5D0E41", image: "img5.jpg" },
+              { color: " #8B4513", image: "img2.jpg" },
+              { color: "#000080", image: "img3.jpg" },
+              { color: "#ffffff", image: "img4.jpg" },
             ],
 
-            description: "بليزر بني فاتح أنيق وكلاسيكي",
+            description: " قميص مقلم كم طويل من M لحد 3XL       ",
           },
 
           {
-            id: "blazer-3",
+            id: "shirt-4.jpg",
 
-            title: "البليزر الرمادي الحديث",
+            title: " قميص أكسفورد   ",
+
+            price: 650,
+
+            image: "shirt-4.jpg",
+
+            colors: [
+              { color: "#808080", image: "shirt-4.jpg" },
+              { color: "#ffffff", image: "shirt-1.jpg" },
+              { color: "#000000", image: "shirt-2.jpg" },
+              { color: "#000080", image: "shirt-3.jpg" },
+
+              { color: "#87CEEB", image: "shirt-5.jpg" },
+            ],
+
+            description: "    قميص أكسفوردمن M لحد 3XLكود (801)",
+          },
+
+          {
+            id: "img26.jpg",
+
+            title: " بنطلون قماش  ",
+
+            price: 450,
+
+            image: "img26.jpg",
+            colors: [],
+
+            description: "  بنطلون قماش",
+          },
+
+          {
+            id: "img27.jpg",
+
+            title: "  بنطلون جينز",
 
             price: 500,
 
-            image: "blazer-3.jpg",
+            image: "img27.jpg",
 
-            colors: [
-              { color: "#000000", image: "img15.jpg" },
-              { color: "#ffffff", image: "img16.jpg" },
-              { color: "#808080", image: "img17.jpg" },
-            ],
+            colors: [],
 
-            description: "بليزر رمادي حديث لمظهر احترافي",
+            description: " بنطلون جينز   ",
           },
 
           {
-            id: "blazer-4",
+            id: "img28.jpg",
 
-            title: "البليزر الأزرق الداكن",
+            title: "  بنطلون جبردين",
 
-            price: 520,
+            price: 500,
 
-            image: "blazer-4.jpg",
+            image: "img28.jpg",
 
-            colors: [
-              { color: "#000000", image: "img15.jpg" },
-              { color: "#ffffff", image: "img16.jpg" },
-              { color: "#808080", image: "img17.jpg" },
-            ],
+            colors: [],
 
-            description: "بليزر أزرق داكن فاخر وأنيق",
-          },
-
-          {
-            id: "blazer-5",
-
-            title: "البليزر البيج الفاخر",
-
-            price: 490,
-
-            image: "blazer-5.jpg",
-
-            colors: [
-              { color: "#000000", image: "img15.jpg" },
-              { color: "#ffffff", image: "img16.jpg" },
-              { color: "#808080", image: "img17.jpg" },
-            ],
-
-            description: "بليزر بيج فاخر للمناسبات الخاصة",
-          },
-
-          {
-            id: "blazer-6",
-
-            title: "البليزر الأسود المخطط",
-
-            price: 530,
-
-            image: "blazer-6.jpg",
-
-            colors: [
-              { color: "#000000", image: "img15.jpg" },
-              { color: "#ffffff", image: "img16.jpg" },
-              { color: "#808080", image: "img17.jpg" },
-            ],
-
-            description: "بليزر أسود مخطط بتصميم عصري",
+            description: "    بنطلون جبردين",
           },
         ],
 
         shirts: [
           {
-            id: "shirt-1",
+            id: "img23.jpg",
 
-            title: "القميص الأبيض الكلاسيكي",
+            title: " تيشيرت",
 
-            price: 200,
+            price: 550,
 
-            image: "shirt-1.jpg",
+            image: "img23.jpg",
 
             colors: [
-              { color: "#000000", image: "img15.jpg" },
-              { color: "#ffffff", image: "img16.jpg" },
-              { color: "#808080", image: "img17.jpg" },
+              { color: "#2ECC71", image: "img23.jpg" },
+              { color: "#D8BFD8", image: "img22.jpg" },
+              { color: "#8B4513", image: "img21.jpg" },
+              { color: "#F5F5DC", image: "img24.jpg" },
+              { color: "#808000", image: "img25.jpg" },
             ],
 
-            description: "قميص أبيض كلاسيكي من أفضل الأقمشة",
+            description: "    متوفر من M إلى 3XLخامة كردونيه ليكرا فاخرة",
           },
 
           {
-            id: "shirt-2",
+            id: "img39.jpg",
 
-            title: "القميص الأسود الفاخر",
+            title: "  بليزر",
 
-            price: 220,
+            price: 1200,
 
-            image: "shirt-2.jpg",
+            image: "img39.jpg",
 
-            colors: [
-              { color: "#000000", image: "img15.jpg" },
-              { color: "#ffffff", image: "img16.jpg" },
-              { color: "#808080", image: "img17.jpg" },
-            ],
+            colors: [],
 
-            description: "قميص أسود فاخر للمناسبات الرسمية",
+            description: "  بليزر",
+          },
+          {
+            id: "img40.jpg",
+
+            title: "  بليزر ",
+
+            price: 1200,
+
+            image: "img40.jpg",
+
+            colors: [],
+
+            description: "   بليزر",
           },
 
           {
-            id: "shirt-3",
+            id: "img41.jpg",
 
-            title: "القميص الأزرق الداكن",
+            title: "  بليزر",
 
-            price: 210,
+            price: 1200,
 
-            image: "shirt-3.jpg",
+            image: "img41.jpg",
 
-            colors: [
-              { color: "#000000", image: "img15.jpg" },
-              { color: "#ffffff", image: "img16.jpg" },
-              { color: "#808080", image: "img17.jpg" },
-            ],
+            colors: [],
 
-            description: "قميص أزرق داكن أنيق وعملي",
+            description: "  بليزر",
           },
 
           {
-            id: "shirt-4",
+            id: "img38.jpg",
 
-            title: "القميص الرمادي الحديث",
+            title: " بليزر",
 
-            price: 215,
+            price: 1200,
 
-            image: "shirt-4.jpg",
+            image: "img38.jpg",
 
-            colors: [
-              { color: "#000000", image: "img15.jpg" },
-              { color: "#ffffff", image: "img16.jpg" },
-              { color: "#808080", image: "img17.jpg" },
-            ],
+            colors: [],
 
-            description: "قميص رمادي حديث ومتعدد الاستخدامات",
-          },
-
-          {
-            id: "shirt-5",
-
-            title: "القميص البيبي بلو",
-
-            price: 225,
-
-            image: "shirt-5.jpg",
-
-            colors: [
-              { color: "#000000", image: "img15.jpg" },
-              { color: "#ffffff", image: "img16.jpg" },
-              { color: "#808080", image: "img17.jpg" },
-            ],
-
-            description: "قميص بني دافئ للمظهر الكلاسيكي",
-          },
-
-          {
-            id: "shirt-6",
-
-            title: "القميص الرصاصي",
-
-            price: 230,
-
-            image: "shirt-6.jpg",
-
-            colors: [
-              { color: "#000000", image: "img15.jpg" },
-              { color: "#ffffff", image: "img16.jpg" },
-              { color: "#808080", image: "img17.jpg" },
-            ],
-
-            description: "قميص أبيض مخطط بتصميم عصري",
+            description: "  بليزر",
           },
         ],
 
         pants: [
           {
-            id: "pants-1",
+            id: "img33.jpg",
 
-            title: "البنطلون الأسود الكلاسيكي",
-
-            price: 280,
-
-            image: "img2.jpg",
-
-            colors: [
-              { color: "#000000", image: "img15.jpg" },
-              { color: "#ffffff", image: "img16.jpg" },
-              { color: "#808080", image: "img17.jpg" },
-            ],
-
-            description: "بنطلون أسود كلاسيكي للمناسبات الرسمية",
-          },
-
-          {
-            id: "pants-2",
-
-            title: "البنطلون الرمادي الفاخر",
+            title: " طقم قافلنج بالدبوس",
 
             price: 300,
 
-            image: "img3.jpg",
+            image: "img33.jpg",
 
-            colors: [
-              { color: "#000000", image: "img15.jpg" },
-              { color: "#ffffff", image: "img16.jpg" },
-              { color: "#808080", image: "img17.jpg" },
-            ],
+            colors: [],
 
-            description: "بنطلون رمادي فاخر وأنيق",
+            description: " طقم قافلنج بالدبوس",
           },
 
           {
-            id: "pants-3",
+            id: "img35.jpg",
 
-            title: "البنطلون البني الدافئ",
+            title: " قافلنج مستورد بالدبوس  ",
 
-            price: 290,
+            price: 300,
 
-            image: "img4.jpg",
+            image: "img35.jpg",
 
-            colors: [
-              { color: "#000000", image: "img15.jpg" },
-              { color: "#ffffff", image: "img16.jpg" },
-              { color: "#808080", image: "img17.jpg" },
-            ],
+            colors: [],
 
-            description: "بنطلون بني دافئ للمظهر الكلاسيكي",
+            description: "   قافلنج مستورد بالدبوس ",
           },
 
           {
-            id: "pants-4",
+            id: "img31.jpg",
 
-            title: "البنطلون الأزرق الداكن",
+            title: " طقم قافلنج بالدبوس",
 
-            price: 310,
+            price: 300,
 
-            image: "img5.jpg",
+            image: "img31.jpg",
 
-            colors: [
-              { color: "#000000", image: "img15.jpg" },
-              { color: "#ffffff", image: "img16.jpg" },
-              { color: "#808080", image: "img17.jpg" },
-            ],
+            colors: [],
 
-            description: "بنطلون أزرق داكن أنيق وعملي",
+            description: " طقم قافلنج بالدبوس",
           },
 
           {
-            id: "pants-5",
+            id: "img36.jpg",
 
-            title: "البنطلون البيج الفاخر",
+            title: " قافلنج مستورد بالدبوس ",
 
-            price: 295,
+            price: 300,
 
-            image: "img6.jpg",
+            image: "img36.jpg",
 
-            colors: [
-              { color: "#000000", image: "img15.jpg" },
-              { color: "#ffffff", image: "img16.jpg" },
-              { color: "#808080", image: "img17.jpg" },
-            ],
-            description: "بنطلون بيج فاخر للمناسبات الخاصة",
+            colors: [],
+
+            description: " قافلنج مستورد بالدبوس ",
           },
 
           {
-            id: "pants-6",
+            id: "img29.jpg",
 
-            title: "البنطلون الأسود المخطط",
+            title: " طقم قافلنج بالدبوس",
 
-            price: 320,
+            price: 300,
 
-            image: "img7.jpg",
+            image: "img29.jpg",
 
-            colors: [
-              { color: "#000000", image: "img15.jpg" },
-              { color: "#ffffff", image: "img16.jpg" },
-              { color: "#808080", image: "img17.jpg" },
-            ],
+            colors: [],
 
-            description: "بنطلون أسود مخطط بتصميم عصري",
+            description: " طقم قافلنج بالدبوس",
+          },
+
+          {
+            id: "img34.jpg",
+
+            title: " قافلنج مستورد بالدبوس ",
+
+            price: 300,
+
+            image: "img34.jpg",
+
+            colors: [],
+
+            description: " قافلنج مستورد بالدبوس ",
           },
         ],
 
@@ -1702,37 +1641,37 @@
 
         product.colors.forEach((c) => {
           colorsHTML += `
-                                        <div class="color-swatch"
-                                          style="background-color: ${c.color};"
-                                          onclick="selectColor('${product.id}', '${c.image}', event)">
-                                        </div>
-                                      `;
+                                              <div class="color-swatch"
+                                                style="background-color: ${c.color};"
+                                                onclick="selectColor('${product.id}', '${c.image}', event)">
+                                              </div>
+                                            `;
         });
 
         card.innerHTML = `
-                                                  <div class="product-image-wrapper">
-                                                    <img src="${product.image}" alt="${product.title}" class="product-image">
-                                                    <div class="color-overlay" id="overlay-${product.id}"></div>
-                                                  </div>
+                                                        <div class="product-image-wrapper">
+                                                          <img src="${product.image}" alt="${product.title}" class="product-image">
+                                                          <div class="color-overlay" id="overlay-${product.id}"></div>
+                                                        </div>
 
-                                                  <div class="product-info">
-                                                    <h3 class="product-title">${product.title}</h3>
-                                                    <div class="product-price">${product.price} ج.م</div>
+                                                        <div class="product-info">
+                                                          <h3 class="product-title">${product.title}</h3>
+                                                          <div class="product-price">${product.price} ج.م</div>
 
-                                                    <div class="product-colors" id="colors-${product.id}">
-                                                      ${colorsHTML}
-                                                    </div>
+                                                          <div class="product-colors" id="colors-${product.id}">
+                                                            ${colorsHTML}
+                                                          </div>
 
-                                                    <div class="product-actions">
-                                                      <button class="btn btn-primary" onclick="addToCart('${product.id}', '${category}')">أضف للسلة</button>
-                                                      <button class="btn btn-secondary" onclick="openModal('${product.id}', '${category}')">عرض التفاصيل</button>
-                                                      <button class="btn btn-primary" 
-onclick="orderProductWhatsApp('${product.id}', '${category}')">
-اطلب الآن
-</button>
-                                                    </div>
-                                                  </div>
-                                                `;
+                                                          <div class="product-actions">
+                                                            
+                                                            <button class="btn btn-secondary" onclick="openModal('${product.id}', '${category}')">عرض التفاصيل</button>
+                                                            <button class="btn btn-primary"
+      onclick="orderProductWhatsApp('${product.id}', '${category}')">
+      اطلب الآن
+      </button>
+                                                          </div>
+                                                        </div>
+                                                      `;
 
         return card;
       }
@@ -1851,25 +1790,25 @@ onclick="orderProductWhatsApp('${product.id}', '${category}')">
 
           cartItem.innerHTML = `
 
-                                                                    <div class="cart-item-title">${item.title}</div>
+                                                                          <div class="cart-item-title">${item.title}</div>
 
-                                                                    <div class="cart-item-color">اللون: <span style="display: inline-block; width: 15px; height: 15px; background-color: ${item.color}; border-radius: 50%; margin-right: 5px;"></span></div>
+                                                                          <div class="cart-item-color">اللون: <span style="display: inline-block; width: 15px; height: 15px; background-color: ${item.color}; border-radius: 50%; margin-right: 5px;"></span></div>
 
-                                                                    <div class="cart-item-price">${item.price} ج.م</div>
+                                                                          <div class="cart-item-price">${item.price} ج.م</div>
 
-                                                                    <div class="cart-item-quantity">
+                                                                          <div class="cart-item-quantity">
 
-                                                                        <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
+                                                                              <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
 
-                                                                        <span>${item.quantity}</span>
+                                                                              <span>${item.quantity}</span>
 
-                                                                        <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
+                                                                              <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
 
-                                                                    </div>
+                                                                          </div>
 
-                                                                    <button class="remove-btn" onclick="removeFromCart(${index})">حذف</button>
+                                                                          <button class="remove-btn" onclick="removeFromCart(${index})">حذف</button>
 
-                                                                `;
+                                                                      `;
 
           cartItems.appendChild(cartItem);
         });
@@ -2065,25 +2004,25 @@ onclick="orderProductWhatsApp('${product.id}', '${category}')">
 
         notification.style.cssText = `
 
-                                                                position: fixed;
+                                                                      position: fixed;
 
-                                                                top: 20px;
+                                                                      top: 20px;
 
-                                                                right: 20px;
+                                                                      right: 20px;
 
-                                                                background-color: #4CAF50;
+                                                                      background-color: #4CAF50;
 
-                                                                color: white;
+                                                                      color: white;
 
-                                                                padding: 15px 20px;
+                                                                      padding: 15px 20px;
 
-                                                                border-radius: 5px;
+                                                                      border-radius: 5px;
 
-                                                                z-index: 10000;
+                                                                      z-index: 10000;
 
-                                                                animation: slideIn 0.3s ease;
+                                                                      animation: slideIn 0.3s ease;
 
-                                                            `;
+                                                                  `;
 
         notification.textContent = message;
 
