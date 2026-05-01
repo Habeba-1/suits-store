@@ -2080,7 +2080,7 @@
 
         cart.forEach((item) => {
           message += `• ${item.title}\n`;
-          message += `  اللون: ${item.color}\n`;
+          message += `  اللون: ${item.color || "بدون لون"}\n`;
           message += `  الكمية: ${item.quantity}\n`;
           message += `  السعر: ${item.price * item.quantity} ج.م\n\n`;
 
@@ -2104,11 +2104,21 @@
       function orderProductWhatsApp(productId, category) {
         const product = products[category].find((p) => p.id === productId);
 
-        const selected = selectedColor[productId] || product.colors[0];
+        if (!product) return;
+
+        const selected = selectedColor[productId];
+
+        let colorText = "بدون لون";
+
+        if (selected && selected.color) {
+          colorText = selected.color;
+        } else if (product.colors && product.colors.length > 0) {
+          colorText = product.colors[0].color;
+        }
 
         let message = `🛍 طلب منتج:\n\n`;
         message += `• ${product.title}\n`;
-        message += `• اللون: ${selected.color}\n`;
+        message += `• اللون: ${colorText}\n`;
         message += `• السعر: ${product.price} ج.م\n\n`;
         message += `📍 العنوان:\n📞 رقم العميل:\n`;
 
