@@ -1654,10 +1654,12 @@
       // Initialize the page
 
       document.addEventListener("DOMContentLoaded", function () {
-        renderAllProducts();
+  localStorage.removeItem("cart"); // يمسح أي سلة قديمة
+  cart = []; // يصفر السلة
 
-        loadCartFromLocalStorage();
-      });
+  renderAllProducts();
+  updateCartUI(); // يحدّث الشكل (يخليها 0)
+});
 
       // Render all products
 
