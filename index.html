@@ -2161,34 +2161,33 @@
 
         window.open(url, "_blank");
       }
-      function orderProductWhatsApp(productId, category) {
-        const product = products[category].find((p) => p.id === productId);
+      const phone = "201014447414";
 
-        if (!product) return;
+function orderProductWhatsApp(productId, category) {
+  const product = products[category].find((p) => p.id === productId);
+  if (!product) return;
 
-        const selected = selectedColor[productId];
+  const selected = selectedColor[productId];
 
-        let colorText = "بدون لون";
+  let colorText = "بدون لون";
 
-        if (selected && selected.color) {
-          colorText = selected.color;
-        } else if (product.colors && product.colors.length > 0) {
-          colorText = product.colors[0].color;
-        }
+  if (selected && selected.color) {
+    colorText = selected.color;
+  } else if (product.colors && product.colors.length > 0) {
+    colorText = product.colors[0].color;
+  }
 
-        let message = `🛍 طلب منتج:\n\n`;
-        message += `• ${product.title}\n`;
-        message += `• اللون: ${colorText}\n`;
-        message += `• السعر: ${product.price} ج.م\n\n`;
-        message += `📍 العنوان:\n📞 رقم العميل:\n`;
+  let message = `🛍 طلب منتج:\n\n`;
+  message += `• ${product.title}\n`;
+  message += `• اللون: ${colorText}\n`;
+  message += `• السعر: ${product.price} ج.م\n\n`;
+  message += `📍 العنوان:\n📞 رقم العميل:\n`;
 
-        const phone = "201014447414";
-
-        const url =
-          "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
-
-        window.open(url, "_blank");
-      }
+  window.open(
+    "https://wa.me/" + phone + "?text=" + encodeURIComponent(message),
+    "_blank"
+  );
+}
       function orderNowWhatsApp() {
         if (cart.length === 0) {
           alert("السلة فارغة!");
