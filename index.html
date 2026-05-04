@@ -2123,11 +2123,7 @@
           document.getElementById("nav-menu").classList.remove("active");
         });
       });
-      const card = document.createElement("div");
-      card.className = "product-card";
-      card.dataset.images = JSON.stringify(product.colors);
-      card.dataset.defaultImage = product.image;
-      card.dataset.index = 0;
+      
 
       function orderNowWhatsApp() {
         if (cart.length === 0) {
@@ -2151,7 +2147,7 @@
         message += "📍 العنوان: \n";
         message += "📞 رقم العميل: \n";
 
-        const phoneNumber = "01014447414"; // 👈 غيريه برقمك
+        const phone = "201014447414"; // 👈 غيريه برقمك
 
         const url =
           "https://wa.me/" +
@@ -2189,33 +2185,31 @@ function orderProductWhatsApp(productId, category) {
   );
 }
       function orderNowWhatsApp() {
-        if (cart.length === 0) {
-          alert("السلة فارغة!");
-          return;
-        }
+  if (cart.length === 0) {
+    alert("السلة فارغة!");
+    return;
+  }
 
-        let message = "🛒 طلب من السلة:\n\n";
-        let total = 0;
+  let message = "🛒 طلب من السلة:\n\n";
+  let total = 0;
 
-        cart.forEach((item) => {
-          message += `• ${item.title}\n`;
-          message += `  اللون: ${item.color}\n`;
-          message += `  الكمية: ${item.quantity}\n`;
-          message += `  السعر: ${item.price * item.quantity} ج.م\n\n`;
+  cart.forEach((item) => {
+    message += `• ${item.title}\n`;
+    message += `  اللون: ${item.color || "بدون لون"}\n`;
+    message += `  الكمية: ${item.quantity}\n`;
+    message += `  السعر: ${item.price * item.quantity} ج.م\n\n`;
 
-          total += item.price * item.quantity;
-        });
+    total += item.price * item.quantity;
+  });
 
-        message += `💰 الإجمالي: ${total} ج.م\n\n`;
-        message += "📍 العنوان:\n📞 رقم العميل:\n";
+  message += `💰 الإجمالي: ${total} ج.م\n\n`;
+  message += "📍 العنوان:\n📞 رقم العميل:\n";
 
-        const phone = "01014447414";
+  const url =
+    "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
 
-        window.open(
-          "https://wa.me/" + phone + "?text=" + encodeURIComponent(message),
-          "_blank",
-        );
-      }
+  window.open(url, "_blank");
+}
     </script>
   </body>
 </html>
