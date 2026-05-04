@@ -1033,11 +1033,11 @@
         }
       }
       @media (max-width: 768px) {
-        .products-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 10px;
-        }
-      }
+  .products-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px;
+  }
+}
 
       @media (max-width: 480px) {
         .products-grid {
@@ -1072,6 +1072,20 @@
           font-size: 0.8rem;
         }
       }
+      @media (max-width: 768px) {
+  .cart-link {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: #d4af37;
+    color: #000 !important;
+    padding: 8px 12px;
+    border-radius: 20px;
+    z-index: 9999;
+    font-size: 14px;
+  }
+}
+
     </style>
   </head>
   <body>
@@ -1092,8 +1106,11 @@
           <li><a href="#pants" class="nav-link">التيشيرت</a></li>
           <li><a href="#jackets" class="nav-link">البليزر</a></li>
           <li><a href="#contact" class="nav-link">التواصل</a></li>
-          <li>></li>
+         
         </ul>
+        <a href="#" class="nav-link cart-link" onclick="toggleCart(event)">
+  🛒 السلة (<span id="cart-count">0</span>)
+</a>
       </div>
     </nav>
     <a href="https://wa.me/201014447414" target="_blank" 
@@ -1706,10 +1723,12 @@
                                                           <div class="product-actions">
 
                                                             <button class="btn btn-secondary" onclick="openModal('${product.id}', '${category}')">عرض التفاصيل</button>
-                                                            <button class="btn btn-primary"
-      onclick="orderProductWhatsApp('${product.id}', '${category}')">
-      اطلب الآن
-      </button>
+                                                             <button class="btn btn-primary" onclick="addToCart('${product.id}', '${category}')">
+    🛒 أضف للسلة
+  </button>
+      <button class="btn btn-secondary" onclick="orderProductWhatsApp('${product.id}', '${category}')">
+    اطلب واتساب
+  </button>
                                                           </div>
                                                         </div>
                                                       `;
